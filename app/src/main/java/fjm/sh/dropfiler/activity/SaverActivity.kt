@@ -346,7 +346,7 @@ class SaverActivity : BaseActivity() {
 					selected = true
 					useIntent({ finishIntent(it) })
 				}
-			}).apply {
+			}, showDividers = true).apply {
 				this.items = items
 			}
 			listView.scrollToPosition(0)

@@ -16,8 +16,8 @@
 	<!-- Where the "unsupported content type" screen files feature requests. -->
 	<string name="issues_new_url" translatable="false">https://github.com/fjmsh/file-saver-android/issues/new</string>
 	<string name="toast_no_browser">No app available to open %1$s</string>
-	<string name="action_change_log">Change Log</string>
-	<string name="action_credits">Credits</string>
+	<string name="action_change_log">Changelog</string>
+	<string name="action_credits">About</string>
 
 	<!-- Folder list -->
 
@@ -57,7 +57,7 @@
 	<string name="credits_version">v%1$s</string>
 	<string name="title_activity_credits">About &appname;</string>
 	<string name="logo_description">Logo</string>
-	<string name="credits_creator">based on Phone Saver by <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_creator">Save anywhere. Organize effortlessly.\n\nA modern Android file-saving utility, based on the app \"Phone Saver\" by <a href="https://github.com/ScreamingHawk">&author;</a></string>
 	<string name="credits_content1">&appname; is a simple application for saving copies of files to your
 		phone through the share feature or \"Open with\".
 	</string>
@@ -167,8 +167,8 @@
 	<string name="navigate_up">Navigate up</string>
 
 	<!-- Main screen -->
-	<string name="folder_list_section_destinations">Save destinations</string>
-	<string name="folder_list_add_destination">Add destination</string>
+	<string name="folder_list_section_destinations">Save Destinations</string>
+	<string name="folder_list_add_destination">Add Destination</string>
 	<string name="folder_list_root_folder">Storage root</string>
 	<string name="folder_list_delete_description">Remove %1$s</string>
 	<string name="folder_list_delete_title">Remove destination?</string>

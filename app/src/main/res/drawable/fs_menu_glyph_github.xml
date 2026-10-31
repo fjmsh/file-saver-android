@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- GitHub mark (Octicons "mark-github", MIT licence), used for the fjmsh profile link -->
+<!-- GitHub mark (Octicons "mark-github", MIT licence), used for the fjmsh profile link. Glyph of the github menu icon tile (fs_menu_ic_github). -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-	android:width="24dp"
-	android:height="24dp"
-	android:tint="?attr/colorControlNormal"
+	android:width="@dimen/fs_menu_icon_glyph"
+	android:height="@dimen/fs_menu_icon_glyph"
+	android:tint="?attr/fsColorOnAccentContainer"
 	android:viewportWidth="24"
 	android:viewportHeight="24">
 	<path

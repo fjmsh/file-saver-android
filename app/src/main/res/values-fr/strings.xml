@@ -10,7 +10,7 @@
 	<!-- Menu -->
 	<string name="action_settings">Paramètres</string>
 	<string name="action_change_log">Historique des changements</string>
-	<string name="action_credits">Crédits</string>
+	<string name="action_credits">À propos</string>
 
 	<!-- Folder list -->
 
@@ -49,7 +49,7 @@
 	<string name="credits_version">v%1$s</string>
 	<string name="title_activity_credits">A propos de &appname;</string>
 	<string name="logo_description">Logo</string>
-	<string name="credits_creator">basé sur Phone Saver par <a href="https://michael.standen.link">&author;</a></string>
+	<string name="credits_creator">Enregistrez partout. Organisez sans effort.\n\nUn utilitaire Android moderne d\'enregistrement de fichiers, basé sur l\'application « Phone Saver » de <a href="https://github.com/ScreamingHawk">&author;</a></string>
 	<string name="credits_content1">&appname; est une simple application pour sauvegarder des copies de
 		fichiers sur votre téléphone via la fonctionnalité partager ou \"Ouvrir avec\".</string>
 	<string name="credits_content2">&appname; est un fork distinct de Phone Saver, développé à l\'origine par

@@ -72,6 +72,8 @@ class CardListAdapter(
 	private val onStartDrag: (RecyclerView.ViewHolder) -> Unit = {},
 	/** Accessibility "Move up" (-1) / "Move down" (+1) for draggable rows. */
 	private val onMoveBy: (CardItem.Row, Int) -> Unit = { _, _ -> },
+	/** Draw a muted divider between consecutive rows of a group (destination lists). */
+	private val showDividers: Boolean = false,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 	companion object {
@@ -169,6 +171,7 @@ class CardListAdapter(
 		private val chevron = view.findViewById<View>(R.id.chevron)
 		private val action = view.findViewById<ImageButton>(R.id.action)
 		private val dragHandle = view.findViewById<View>(R.id.drag_handle)
+		private val divider = view.findViewById<View>(R.id.row_divider)
 		private val radius = view.resources.getDimension(MiuixR.dimen.miuix_prefs_card_radius)
 
 		// Miuix press feedback (background darkens/lightens like Miuix preferences)
@@ -272,6 +275,7 @@ class CardListAdapter(
 			// Round the outer corners of each group of consecutive rows
 			val first = items.getOrNull(position - 1) !is CardItem.Row
 			val last = items.getOrNull(position + 1) !is CardItem.Row
+			divider.visibility = if (showDividers && !first) View.VISIBLE else View.GONE
 			card.setTlRadius(if (first) radius else 0f).setTrRadius(if (first) radius else 0f)
 				.setBlRadius(if (last) radius else 0f).setBrRadius(if (last) radius else 0f)
 			card.invalidate()

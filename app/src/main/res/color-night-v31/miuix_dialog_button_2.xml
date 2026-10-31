@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Overrides the Miuix XML accent so that it follows ?attr/fsColorAccent, which is
+     the Miuix blue by default and the Monet accent when dynamic colors are enabled. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:color="?attr/fsColorAccent" />
+</selector>

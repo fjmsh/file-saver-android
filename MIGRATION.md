@@ -257,7 +257,7 @@ crashing.
 | `assembleDebug`, `lintDebug` | OK; lint 0 errors, the same 9 pre-existing warnings |
 | APK `aapt2 dump badging` | `package: name='fjm.sh.dropfiler'`, versionCode 37, versionName 6.0.0, minSdk 21, **targetSdk 28**, label DropFiler |
 | Merged manifest | All components under `fjm.sh.dropfiler.*`; VIEW filter present; SEND filters unchanged |
-| Robolectric | 523 run, 0 failures (2 opt-in screenshot tests skipped) on API 23, 26, 28, 29, 30, 31, 33, 34, 35, 36 (`OpenWithTest` on 23, 28, 29, 34, 36) |
+| Robolectric | 523 run, 0 failures at the time of the rename (565 after the UI follow-ups below) |
 
 `OpenWithTest` covers implicit `ACTION_VIEW` resolution for `content://` with
 `application/pdf`, `image/jpeg`, `video/mp4`, `application/zip`, `application/octet-stream`,
@@ -270,3 +270,28 @@ failures (null URI, revoked grant, missing file, failing provider, folder, expli
 **Not tested on a device or emulator** (no KVM in the build environment): the real
 "Open with" dialogs of file managers (including the system Files app), real URI grant
 behaviour, and coexistence with an installed Phone Saver.
+
+### UI follow-ups
+
+* Overflow menu: "Change Log" is now "Changelog" and "Credits" is now "About". Every item
+  (Settings, GitHub, Changelog, About) has a rounded-square icon tile like the list rows
+  (`fs_menu_ic_*`: 32dp tile, 10dp corners, 20dp Material/Octicons glyph on
+  `?attr/fsColorAccentContainer`).
+* Menu width: AppCompat gives popup menu items a 196dp minimum width, which left a lot of
+  empty space. `res/layout/abc_popup_menu_item_layout.xml` is a copy of the AppCompat 1.7.1
+  layout with a 157dp minimum (-20%). All English items fit (widest ~142dp); it is only a
+  minimum, so longer translations still widen the menu. Re-check the copy when upgrading
+  AppCompat.
+* About: the line below the version reads "Save anywhere. Organize effortlessly." followed
+  by "A modern Android file-saving utility, based on the app "Phone Saver" by Michael
+  Standen", linking to https://github.com/ScreamingHawk (translated in fr/ja/zh-TW).
+* Main screen and share sheet: muted hairline dividers between destination rows
+  (`@color/fs_row_divider`, from the title text to the row end). The folder picker is
+  unchanged (`CardListAdapter(showDividers = …)`).
+* "Save Destinations" / "Add Destination" (English title case).
+* Fix: with dynamic colors enabled, the Settings screen kept the Miuix blue in **dark
+  mode**. The accent overrides of Miuix colors lived in `color-v31/`, but the library
+  defines the same colors in `values-night/`, and the night qualifier takes precedence over
+  the API level. The overrides are now also in `color-night-v31/`. Covered by
+  `AppearanceTest.dynamicColors_enabledInSettings_recolorSettingsScreen[_dark]`, which turns
+  the setting on from the Settings screen and checks the switch color after the recreate.

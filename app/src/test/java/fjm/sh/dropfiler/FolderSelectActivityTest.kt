@@ -47,6 +47,21 @@ class FolderSelectActivityTest {
 	}
 
 	@Test
+	fun folderPicker_hasNoRowDividers() {
+		val activity = Robolectric.buildActivity(FolderSelectActivity::class.java).setup().get()
+		TestSupport.idle()
+		val list = activity.findViewById<RecyclerView>(R.id.list)
+		list.measure(View.MeasureSpec.makeMeasureSpec(1080, View.MeasureSpec.EXACTLY),
+			View.MeasureSpec.makeMeasureSpec(4000, View.MeasureSpec.AT_MOST))
+		list.layout(0, 0, 1080, list.measuredHeight)
+		(0 until list.adapter!!.itemCount).forEach {
+			list.findViewHolderForAdapterPosition(it)?.itemView?.findViewById<View>(R.id.row_divider)?.let { divider ->
+				assertEquals(View.GONE, divider.visibility)
+			}
+		}
+	}
+
+	@Test
 	fun listsOnlyFolders_sortedCaseInsensitively_thenSelects() {
 		val activity = Robolectric.buildActivity(FolderSelectActivity::class.java).setup().get()
 		TestSupport.idle()

@@ -9,9 +9,17 @@
 	<dimen name="fs_row_min_height">64dp</dimen>
 	<dimen name="fs_row_padding_horizontal">16dp</dimen>
 	<dimen name="fs_row_padding_vertical">12dp</dimen>
+	<dimen name="fs_row_divider_height">0.6dp</dimen>
+	<!-- Row padding + icon tile + Miuix icon margin: the start of the title text -->
+	<dimen name="fs_row_divider_inset_start">71dp</dimen>
 	<dimen name="fs_icon_tile">40dp</dimen>
 	<dimen name="fs_icon_tile_radius">12dp</dimen>
 	<dimen name="fs_icon_size">24dp</dimen>
+	<!-- Overflow menu icon tiles: tile = glyph + 2 x inset -->
+	<dimen name="fs_menu_icon_tile">32dp</dimen>
+	<dimen name="fs_menu_icon_tile_radius">10dp</dimen>
+	<dimen name="fs_menu_icon_glyph">20dp</dimen>
+	<dimen name="fs_menu_icon_inset">6dp</dimen>
 	<dimen name="fs_touch_target">48dp</dimen>
 	<dimen name="fs_touch_target_comfortable">52dp</dimen>
 	<dimen name="fs_button_height">52dp</dimen>
@@ -23,6 +31,8 @@
 	<dimen name="fs_popup_offset">4dp</dimen>
 	<dimen name="fs_popup_item_padding">24dp</dimen>
 	<dimen name="fs_popup_list_padding">8dp</dimen>
+	<!-- 20% below AppCompat's 196dp popup menu minimum -->
+	<dimen name="fs_popup_min_width">157dp</dimen>
 	<dimen name="fs_empty_illustration">96dp</dimen>
 	<dimen name="fs_sheet_max_width">560dp</dimen>
 	<dimen name="fs_logo_size">88dp</dimen>

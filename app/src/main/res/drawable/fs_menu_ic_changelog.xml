@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Overflow menu icon: the glyph on a rounded square tile, like the list row icons.
+	 Insets instead of item width/height so it also works on API 21 - 22. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+	<item>
+		<shape android:shape="rectangle">
+			<size
+				android:width="@dimen/fs_menu_icon_tile"
+				android:height="@dimen/fs_menu_icon_tile" />
+			<corners android:radius="@dimen/fs_menu_icon_tile_radius" />
+			<solid android:color="?attr/fsColorAccentContainer" />
+		</shape>
+	</item>
+	<item
+		android:bottom="@dimen/fs_menu_icon_inset"
+		android:drawable="@drawable/fs_menu_glyph_changelog"
+		android:left="@dimen/fs_menu_icon_inset"
+		android:right="@dimen/fs_menu_icon_inset"
+		android:top="@dimen/fs_menu_icon_inset" />
+</layer-list>

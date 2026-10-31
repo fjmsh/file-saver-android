@@ -260,6 +260,36 @@ class FolderListActivityTest {
 	}
 
 	@Test
+	fun destinations_haveDividersBetweenRows() {
+		setDestinations("/A", "/B", "/C")
+		val list = laidOutList(launch())
+		val dividers = (0 until list.adapter!!.itemCount).mapNotNull { position ->
+			list.findViewHolderForAdapterPosition(position)?.itemView?.findViewById<View>(R.id.row_divider)?.visibility
+		}
+		// The section header has no divider view; no line above the first row of the card
+		assertEquals(listOf(View.GONE, View.VISIBLE, View.VISIBLE), dividers)
+	}
+
+	@Test
+	fun overflowMenu_titlesAndRoundedSquareIcons() {
+		val activity = launch()
+		val menu = activity.findViewById<com.hchen.himiuix.MiuixAppBar>(R.id.appbar).toolbar.menu
+		assertEquals(listOf("Settings", "fjmsh", "Changelog", "About"),
+			(0 until menu.size()).map { menu.getItem(it).title.toString() })
+		val tile = activity.resources.getDimensionPixelSize(R.dimen.fs_menu_icon_tile)
+		(0 until menu.size()).map { menu.getItem(it) }.forEach {
+			val icon = it.icon
+			assertNotNull("${it.title} icon", icon)
+			assertTrue("${it.title} uses an icon tile", icon is android.graphics.drawable.LayerDrawable)
+			assertEquals(tile, icon!!.intrinsicWidth)
+			assertEquals(tile, icon.intrinsicHeight)
+		}
+		// The popup minimum width is 20% below AppCompat's 196dp
+		assertEquals((157 * activity.resources.displayMetrics.density).toInt(),
+			activity.resources.getDimensionPixelSize(R.dimen.fs_popup_min_width))
+	}
+
+	@Test
 	fun addButton_opensFolderSelect() {
 		setDestinations("/A")
 		val activity = launch()

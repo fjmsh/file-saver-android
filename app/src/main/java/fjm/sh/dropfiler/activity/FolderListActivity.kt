@@ -53,6 +53,7 @@ class FolderListActivity : BaseActivity(), MiuixListFragment.Host {
 		onMessageAction = { openFolderSelect() },
 		onStartDrag = { holder -> itemTouchHelper.startDrag(holder) },
 		onMoveBy = { row, delta -> moveDestination(row.key, delta) },
+		showDividers = true,
 	)
 
 	/**
@@ -236,8 +237,7 @@ class FolderListActivity : BaseActivity(), MiuixListFragment.Host {
 	}
 
 	/**
-	 * Overflow menus hide item icons by default; show them so the GitHub item has its logo.
-	 * Items without an icon are unaffected.
+	 * Overflow menus hide item icons by default; show the rounded-square item icons.
 	 */
 	@SuppressLint("RestrictedApi")
 	private fun showOverflowMenuIcons(menu: Menu) {

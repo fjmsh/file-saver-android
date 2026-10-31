@@ -154,6 +154,21 @@ class SaverActivityTest {
 	}
 
 	@Test
+	fun shareSheet_hasDividersBetweenDestinations() {
+		setDestinations("/A", "/B", "/C")
+		val activity = launch(textIntent("dividers")).get()
+		assertTrue(waitFor { activity.findViewById<View>(R.id.list).visibility == View.VISIBLE })
+		val list = activity.findViewById<RecyclerView>(R.id.list)
+		list.measure(View.MeasureSpec.makeMeasureSpec(1080, View.MeasureSpec.EXACTLY),
+			View.MeasureSpec.makeMeasureSpec(4000, View.MeasureSpec.AT_MOST))
+		list.layout(0, 0, 1080, list.measuredHeight)
+		val dividers = (0 until 3).map {
+			list.findViewHolderForAdapterPosition(it)!!.itemView.findViewById<View>(R.id.row_divider).visibility
+		}
+		assertEquals(listOf(View.GONE, View.VISIBLE, View.VISIBLE), dividers)
+	}
+
+	@Test
 	fun missingSingleDestination_asksForAnotherFolderInsteadOfCrashing() {
 		setDestinations("/Gone")
 		File(root(), "Gone").deleteRecursively()

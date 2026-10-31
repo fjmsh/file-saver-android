@@ -131,6 +131,8 @@ class ScreenshotTest {
 		// Folder picker with dynamic colors (accent 3 "New folder" button)
 		prefs.edit().putBoolean("dynamic_colors", true).commit()
 		capture(Robolectric.buildActivity(FolderSelectActivity::class.java).setup().get(), "10-folder-select-dynamic$suffix")
+		capture(Robolectric.buildActivity(SettingsActivity::class.java).setup().get(), "11-settings-dynamic$suffix")
+		capture(Robolectric.buildActivity(FolderListActivity::class.java).setup().get(), "12-destinations-dynamic$suffix")
 		prefs.edit().putBoolean("dynamic_colors", false).commit()
 	}
 

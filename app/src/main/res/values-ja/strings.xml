@@ -9,7 +9,7 @@
 
 	<!-- Menu -->
 	<string name="action_settings">設定</string>
-	<string name="action_credits">クレジット</string>
+	<string name="action_credits">情報</string>
 
 	<!-- Folder list -->
 
@@ -36,7 +36,7 @@
 	<string name="credits_version">v%1$s</string>
 	<string name="title_activity_credits">&appname; について</string>
 	<string name="logo_description">ロゴ</string>
-	<string name="credits_creator"><a href="https://michael.standen.link">&author;</a> による Phone Saver をベースにしています</string>
+	<string name="credits_creator">どこにでも保存。手間なく整理。\n\nモダンな Android ファイル保存ユーティリティ。<a href="https://github.com/ScreamingHawk">&author;</a> によるアプリ「Phone Saver」をベースにしています</string>
 	<string name="credits_content1">&appname; は共有機能または「アプリで開く」を通じてファイルのコピーを電話に保存する
 		シンプルなアプリケーションです。</string>
 	<string name="credits_content2">&appname; は、&author; (ScreamingHawk) が開発した Phone Saver を別ブランドとしてフォークしたものです。

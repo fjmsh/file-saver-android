@@ -10,7 +10,7 @@
 	<!-- Menu -->
 	<string name="action_settings">設定</string>
 	<string name="action_change_log">變更記錄</string>
-	<string name="action_credits">鳴謝</string>
+	<string name="action_credits">關於</string>
 
 	<!-- Folder list -->
 
@@ -50,7 +50,7 @@
 	<string name="credits_version">v%1$s</string>
 	<string name="title_activity_credits">關於 &appname;</string>
 	<string name="logo_description">標誌</string>
-	<string name="credits_creator">基於 <a href="https://michael.standen.link">&author;</a> 的 Phone Saver</string>
+	<string name="credits_creator">隨處儲存，輕鬆整理。\n\n現代化的 Android 檔案儲存工具，基於 <a href="https://github.com/ScreamingHawk">&author;</a> 的應用程式「Phone Saver」</string>
 	<string name="credits_content1">&appname; 是一個簡單的應用程式，可以透過分享功能或「以其他應用程式開啟」
 		儲存檔案的副本到手機中。</string>
 	<string name="credits_content2">&appname; 是 Phone Saver 的獨立品牌分支，Phone Saver 最初由 &author; (ScreamingHawk) 開發。

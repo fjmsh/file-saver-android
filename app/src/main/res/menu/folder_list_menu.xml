@@ -4,22 +4,25 @@
 	tools:context="fjm.sh.dropfiler.FolderListActivity">
 	<item
 		android:id="@+id/action_settings"
+		android:icon="@drawable/fs_menu_ic_settings"
 		android:orderInCategory="100"
 		android:title="@string/action_settings"
 		app:showAsAction="never" />
 	<item
 		android:id="@+id/action_github"
-		android:icon="@drawable/fs_ic_github"
+		android:icon="@drawable/fs_menu_ic_github"
 		android:orderInCategory="125"
 		android:title="@string/action_github"
 		app:showAsAction="never" />
 	<item
 		android:id="@+id/action_change_log"
+		android:icon="@drawable/fs_menu_ic_changelog"
 		android:orderInCategory="150"
 		android:title="@string/action_change_log"
 		app:showAsAction="never" />
 	<item
 		android:id="@+id/action_credits"
+		android:icon="@drawable/fs_menu_ic_about"
 		android:orderInCategory="200"
 		android:title="@string/action_credits"
 		app:showAsAction="never" />

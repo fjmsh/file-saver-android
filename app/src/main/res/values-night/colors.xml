@@ -19,4 +19,6 @@
 		 The light (default) values come from the Miuix XML library. -->
 	<color name="miuix_theme_color" tools:ignore="MissingDefaultResource">#131313</color>
 	<color name="miuix_default_surface_color" tools:ignore="MissingDefaultResource">#131313</color>
+	<!-- Muted divider between destination rows -->
+	<color name="fs_row_divider">#1FFFFFFF</color>
 </resources>
