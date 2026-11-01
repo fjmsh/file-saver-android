@@ -61,7 +61,7 @@ class FolderSelectActivity : BaseActivity(), MiuixListFragment.Host {
 		}
 		updateListView()
 		listView?.scrollToPosition(0)
-	})
+	}, showDividers = true)
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)

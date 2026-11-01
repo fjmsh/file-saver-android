@@ -47,18 +47,23 @@ class FolderSelectActivityTest {
 	}
 
 	@Test
-	fun folderPicker_hasNoRowDividers() {
+	fun folderPicker_hasDividersBetweenRows() {
 		val activity = Robolectric.buildActivity(FolderSelectActivity::class.java).setup().get()
 		TestSupport.idle()
 		val list = activity.findViewById<RecyclerView>(R.id.list)
 		list.measure(View.MeasureSpec.makeMeasureSpec(1080, View.MeasureSpec.EXACTLY),
 			View.MeasureSpec.makeMeasureSpec(4000, View.MeasureSpec.AT_MOST))
 		list.layout(0, 0, 1080, list.measuredHeight)
-		(0 until list.adapter!!.itemCount).forEach {
-			list.findViewHolderForAdapterPosition(it)?.itemView?.findViewById<View>(R.id.row_divider)?.let { divider ->
-				assertEquals(View.GONE, divider.visibility)
-			}
+		val items = (list.adapter as CardListAdapter).items
+		items.indices.forEach { position ->
+			if (items[position] !is CardItem.Row) return@forEach
+			val divider = list.findViewHolderForAdapterPosition(position)!!.itemView.findViewById<View>(R.id.row_divider)
+			// A line between consecutive rows of a card, none above the first row of a card
+			val expected = if (items.getOrNull(position - 1) is CardItem.Row) View.VISIBLE else View.GONE
+			assertEquals("row $position", expected, divider.visibility)
 		}
+		// current folder card, then parent + 2 sub folders: dividers above /Alpha and /beta
+		assertEquals(2, items.indices.count { items[it] is CardItem.Row && items.getOrNull(it - 1) is CardItem.Row })
 	}
 
 	@Test

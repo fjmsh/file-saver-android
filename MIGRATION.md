@@ -286,8 +286,8 @@ behaviour, and coexistence with an installed Phone Saver.
   by "A modern Android file-saving utility, based on the app "Phone Saver" by Michael
   Standen", linking to https://github.com/ScreamingHawk (translated in fr/ja/zh-TW).
 * Main screen and share sheet: muted hairline dividers between destination rows
-  (`@color/fs_row_divider`, from the title text to the row end). The folder picker is
-  unchanged (`CardListAdapter(showDividers = …)`).
+  (`@color/fs_row_divider`, from the title text to the row end), and the same dividers in
+  the folder picker (`CardListAdapter(showDividers = true)`).
 * "Save Destinations" / "Add Destination" (English title case).
 * Fix: with dynamic colors enabled, the Settings screen kept the Miuix blue in **dark
   mode**. The accent overrides of Miuix colors lived in `color-v31/`, but the library
