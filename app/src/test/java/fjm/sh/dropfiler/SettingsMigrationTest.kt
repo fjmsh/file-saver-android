@@ -43,8 +43,9 @@ class SettingsMigrationTest {
 			.putBoolean("lenient_regex", true)
 			.putBoolean("follow_redirects", false)
 			.putBoolean("force_saving", true)
+			// Settings of removed features (support pop up, "Save Imgur images"): ignored,
+			// but left untouched
 			.putBoolean("special_imgur", true)
-			// Setting of the removed support pop up: ignored, but left untouched
 			.putBoolean("hide_support", true)
 			.commit()
 	}
@@ -100,6 +101,9 @@ class SettingsMigrationTest {
 		assertTrue(fragment.findPreference<MiuixSwitchPreference>("location_select")!!.isChecked)
 		assertFalse(fragment.findPreference<MiuixSwitchPreference>("follow_redirects")!!.isChecked)
 		assertNull("support pop up setting removed", fragment.findPreference<MiuixSwitchPreference>("hide_support"))
+		assertNull("\"Save Imgur images\" removed", fragment.findPreference<MiuixSwitchPreference>("special_imgur"))
+		val links = fragment.findPreference<androidx.preference.PreferenceGroup>("category_links")!!
+		assertEquals(listOf("follow_redirects"), (0 until links.preferenceCount).map { links.getPreference(it).key })
 
 		assertEquals("showing settings must not rewrite stored values", before, prefs.all.toMap())
 
@@ -111,7 +115,6 @@ class SettingsMigrationTest {
 		assertTrue(PreferenceHelper.useLenientRegex)
 		assertFalse(PreferenceHelper.followRedirects)
 		assertTrue(PreferenceHelper.forceSaving)
-		assertTrue(PreferenceHelper.specialImgur)
 	}
 
 	@Test

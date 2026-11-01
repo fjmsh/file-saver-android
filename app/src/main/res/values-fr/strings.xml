@@ -112,9 +112,6 @@
 		même s\'il n\'est pas explicitement recevable. ATTENTION: Sauvegarder avec ce paramètre activé peut avoir des effets néfastes.
 	</string>
 
-	<string name="pref_title_special_imgur">Sauvegarder les images Imgur</string>
-	<string name="pref_description_special_imgur">Sauvegarder la première image lors du partage d\'un lien Imgur.
-	</string>
 
 	<string name="pref_title_log_to_user">Afficher les informations de debug</string>
 	<array name="pref_list_title_log_to_user">

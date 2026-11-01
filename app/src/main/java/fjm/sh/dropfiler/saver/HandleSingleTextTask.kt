@@ -54,10 +54,6 @@ internal constructor(
 				// Follow redirects
 				pair = LinkHelper.resolveRedirects(saverActivity, pair.url)
 			}
-			if (PreferenceHelper.specialImgur){
-				// Convert imgur URL to imgur
-				pair = ImgurHelper.getImageUrl(saverActivity, pair)
-			}
 
 			// Default to open connection content type
 			var urlContentType: String? = pair.conn?.getHeaderField("Content-Type")

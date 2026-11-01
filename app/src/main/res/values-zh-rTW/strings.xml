@@ -111,9 +111,6 @@
 		明確的支援。警告：啟用此功能可能會對儲存有不良影響。
 	</string>
 
-	<string name="pref_title_special_imgur">儲存 Imgur 圖片</string>
-	<string name="pref_description_special_imgur">當分享 Imgur 連結時，儲存第一張圖片。
-	</string>
 
 	<string name="pref_title_log_to_user">顯示除錯資訊</string>
 	<array name="pref_list_title_log_to_user">

@@ -319,3 +319,10 @@ list yet) or "Please open the app to add save locations".
   were removed, since there is always a destination now.
 * Tests: `DefaultFolderTest`. The other share and main-screen tests run with the default
   folder hidden, so they keep testing the user's destinations as before.
+
+### "Save Imgur images" removed
+
+The Links setting "Save Imgur images" (`special_imgur`, off by default) and the feature it
+controlled (`ImgurHelper`: saving the first image of a shared Imgur page) were removed.
+Imgur links are now saved like any other link. A stored `special_imgur` value is ignored
+and left untouched, like the earlier `hide_support`.
