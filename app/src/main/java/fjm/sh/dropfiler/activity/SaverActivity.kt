@@ -284,7 +284,9 @@ class SaverActivity : BaseActivity() {
 	 * Whether a destination folder still exists. Destinations can be deleted or moved by other
 	 * apps after they were added; saving into a missing folder would fail.
 	 */
-	private fun isAvailable(absoluteLocation: String): Boolean = File(absoluteLocation).isDirectory
+	private fun isAvailable(absoluteLocation: String): Boolean =
+		// The built-in DropFiler folder is created when it is first needed
+		LocationHelper.prepareDestination(absoluteLocation)
 
 	/**
 	 * Shows the destination list so the user can pick one.
@@ -360,7 +362,7 @@ class SaverActivity : BaseActivity() {
 	private fun askForAnotherFolder(missingAbsoluteLocation: String) {
 		log.w("Destination $missingAbsoluteLocation does not exist")
 		location = null
-		val locations = LocationHelper.loadFolderListWLocationSelect(this).orEmpty()
+		val locations = LocationHelper.loadFolderListWLocationSelect(this)
 		showDestinations(locations, missingLocation = missingAbsoluteLocation)
 	}
 
@@ -371,42 +373,24 @@ class SaverActivity : BaseActivity() {
 	 * Load the list of locations
 	 */
 	private fun loadList() {
-		LocationHelper.loadFolderListWLocationSelect(this)?.let {locations ->
-
-			when {
-				locations.size > 1 -> {
-					showDestinations(locations)
-					return // await selection
-				}
-				locations.size == 1 -> {
-					// Only one location, just use it
-					if (!PreferenceHelper.locationSelectEnabled) {
-						// Only set location when not using location select
-						location = LocationHelper.addRoot(locations[0])
-						if (!isAvailable(location!!)) {
-							// The only destination was moved or deleted; let the user pick another
-							askForAnotherFolder(location!!)
-							return // await selection
-						}
-					}
-					useIntent({ finishIntent(it) })
-					return // activity dead
-				}
-				else -> {
-					runOnUiThread {
-						Toast.makeText(this, R.string.toast_save_init_no_locations, Toast.LENGTH_LONG).show()
-						exitApplication()
-					}
-					return // activity dead
-				}
+		// Never empty: the built-in DropFiler folder is used when there is nothing else
+		val locations = LocationHelper.loadFolderListWLocationSelect(this)
+		if (locations.size > 1) {
+			showDestinations(locations)
+			return // await selection
+		}
+		// Only one location, just use it
+		if (!PreferenceHelper.locationSelectEnabled) {
+			// Only set location when not using location select
+			location = LocationHelper.addRoot(locations[0])
+			if (!isAvailable(location!!)) {
+				// The only destination was moved or deleted (or the DropFiler folder could
+				// not be created); let the user pick another
+				askForAnotherFolder(location!!)
+				return // await selection
 			}
 		}
-
-		runOnUiThread {
-			Toast.makeText(this, R.string.toast_save_init_error, Toast.LENGTH_LONG).show()
-			exitApplication()
-		}
-		return // activity dead
+		useIntent({ finishIntent(it) })
 	}
 
 	private fun useIntent(callback: (success: Boolean?) -> Unit, dryRun: Boolean = false) {

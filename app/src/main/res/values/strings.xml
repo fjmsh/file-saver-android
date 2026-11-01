@@ -21,8 +21,6 @@
 
 	<!-- Folder list -->
 
-	<string name="folder_list_empty_title">Welcome to &appname;!</string>
-	<string name="folder_list_empty_body">Please add a save location with the button below.</string>
 
 	<string name="location_select_label">* Select Location *</string>
 
@@ -33,8 +31,6 @@
 	<string name="toast_save_successful">Saved successfully.</string>
 	<string name="toast_save_in_progress">Save in progress…</string>
 	<string name="toast_save_failed">Save failed.</string>
-	<string name="toast_save_init_error">Error loading save locations.</string>
-	<string name="toast_save_init_no_locations">Please open the app to add save locations.</string>
 	<string name="toast_save_file_exists_overwrite">Overwriting file already in this location…</string>
 	<string name="toast_save_file_exists_fail">Cannot save, as file already exists.</string>
 	<string name="toast_save_file_exists_self_abort">Aborting! It appears you are saving this file
@@ -273,4 +269,8 @@
 	<string name="folder_list_move_up">Move up</string>
 	<string name="folder_list_move_down">Move down</string>
 	<string name="folder_list_moved_announcement">%1$s moved to position %2$d of %3$d</string>
+	<string name="folder_list_default_summary">%1$s · Default location</string>
+	<string name="toast_default_folder_hidden">&appname; is already a built-in save location. Turn off \"Hide \"&appname;\" save location\" in Settings to show it.</string>
+	<string name="pref_title_hide_default_folder">Hide \"&appname;\" save location</string>
+	<string name="pref_description_hide_default_folder">Hide the built-in &appname; folder when you have added other save locations. If there are no others, it is still shown.</string>
 </resources>

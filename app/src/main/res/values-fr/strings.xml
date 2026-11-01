@@ -14,8 +14,6 @@
 
 	<!-- Folder list -->
 
-	<string name="folder_list_empty_title">Bienvenue sur &appname;!</string>
-	<string name="folder_list_empty_body">Veuillez ajouter un lieu de sauvegarde avec le bouton ci-dessous.</string>
 
 	<string name="location_select_label">* Selectionner lieu *</string>
 
@@ -26,8 +24,6 @@
 	<string name="toast_save_successful">Sauvegardé avec succès.</string>
 	<string name="toast_save_in_progress">Sauvegarde en cours…</string>
 	<string name="toast_save_failed">Sauvegarde échouée.</string>
-	<string name="toast_save_init_error">Erreur de chargement des lieus de sauvegarde.</string>
-	<string name="toast_save_init_no_locations">Veuillez ouvrir l\'application pour ajouter des lieus de sauvegarde.</string>
 	<string name="toast_save_file_exists_overwrite">Ecrasement du fichier présent à cet endroit…</string>
 	<string name="toast_save_file_exists_fail">Impossible de sauvegarder, ce fichier existe déjà.</string>
 	<string name="toast_save_file_exists_self_abort">Abandon! Il semblerait que vous remplacez ce fichier par lui-même.</string>
@@ -246,4 +242,8 @@
 	<string name="folder_list_move_up">Monter</string>
 	<string name="folder_list_move_down">Descendre</string>
 	<string name="folder_list_moved_announcement">%1$s déplacé en position %2$d sur %3$d</string>
+	<string name="folder_list_default_summary">%1$s · Emplacement par défaut</string>
+	<string name="toast_default_folder_hidden">&appname; est déjà un emplacement de sauvegarde intégré. Désactivez « Masquer l\'emplacement « &appname; » » dans les paramètres pour l\'afficher.</string>
+	<string name="pref_title_hide_default_folder">Masquer l\'emplacement « &appname; »</string>
+	<string name="pref_description_hide_default_folder">Masque le dossier &appname; intégré lorsque vous avez ajouté d\'autres emplacements de sauvegarde. S\'il n\'y en a pas d\'autres, il reste affiché.</string>
 </resources>

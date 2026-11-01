@@ -14,8 +14,6 @@
 
 	<!-- Folder list -->
 
-	<string name="folder_list_empty_title">歡迎使用 &appname;!</string>
-	<string name="folder_list_empty_body">請使用下面的按鈕加入儲存位置。</string>
 
 	<string name="location_select_label">* 選擇位置 *</string>
 
@@ -26,8 +24,6 @@
 	<string name="toast_save_successful">成功儲存。</string>
 	<string name="toast_save_in_progress">正在儲存…</string>
 	<string name="toast_save_failed">儲存失敗。</string>
-	<string name="toast_save_init_error">載入儲存位置時發生錯誤。</string>
-	<string name="toast_save_init_no_locations">請開啟應用程式來加入儲存位置。</string>
 	<string name="toast_save_file_exists_overwrite">正在覆寫已存在於這個位置的檔案…</string>
 	<string name="toast_save_file_exists_fail">檔案已存在，因此無法儲存。</string>
 	<string name="toast_save_file_exists_self_abort">正在中止！似乎您正在儲存檔案
@@ -241,4 +237,8 @@
 	<string name="folder_list_move_up">上移</string>
 	<string name="folder_list_move_down">下移</string>
 	<string name="folder_list_moved_announcement">已將 %1$s 移至第 %2$d 個（共 %3$d 個）</string>
+	<string name="folder_list_default_summary">%1$s · 預設位置</string>
+	<string name="toast_default_folder_hidden">&appname; 已經是內建的儲存位置。若要顯示，請在設定中關閉「隱藏「&appname;」儲存位置」。</string>
+	<string name="pref_title_hide_default_folder">隱藏「&appname;」儲存位置</string>
+	<string name="pref_description_hide_default_folder">當您已加入其他儲存位置時，隱藏內建的 &appname; 資料夾。如果沒有其他儲存位置，仍會顯示。</string>
 </resources>

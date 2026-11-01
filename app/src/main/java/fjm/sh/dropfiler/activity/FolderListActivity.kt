@@ -50,7 +50,6 @@ class FolderListActivity : BaseActivity(), MiuixListFragment.Host {
 
 	private val adapter: CardListAdapter = CardListAdapter(
 		onRowAction = { row, _ -> confirmDelete(row.key) },
-		onMessageAction = { openFolderSelect() },
 		onStartDrag = { holder -> itemTouchHelper.startDrag(holder) },
 		onMoveBy = { row, delta -> moveDestination(row.key, delta) },
 		showDividers = true,
@@ -169,7 +168,7 @@ class FolderListActivity : BaseActivity(), MiuixListFragment.Host {
 		ChangeLogHelper.show(this, false)
 
 		// Keep Direct Share targets in sync for users upgrading from older versions
-		DirectShareHelper.publish(this, LocationHelper.loadFolderList(this).orEmpty())
+		DirectShareHelper.publish(this, LocationHelper.destinations(this))
 	}
 
 	override fun onListViewCreated(recyclerView: RecyclerView) {
@@ -227,7 +226,12 @@ class FolderListActivity : BaseActivity(), MiuixListFragment.Host {
 				val selected = data.getStringExtra(FolderSelectActivity.FOLDER_SELECTED) ?: return
 				val folder = LocationHelper.removeRoot(selected)
 				// Don't add duplicates. New destinations go to the end so a custom order is kept.
-				if (!folderList.contains(folder)) {
+				if (LocationHelper.isDefaultFolder(folder)) {
+					// Already built in; explain where it is if the user has hidden it
+					if (LocationHelper.destinations(this, folderList).none(LocationHelper::isDefaultFolder)) {
+						Toast.makeText(this, R.string.toast_default_folder_hidden, Toast.LENGTH_LONG).show()
+					}
+				} else if (!folderList.contains(folder)) {
 					folderList.add(folder)
 					LocationHelper.saveFolderList(this, folderList)
 					showFolderList()
@@ -266,28 +270,17 @@ class FolderListActivity : BaseActivity(), MiuixListFragment.Host {
 		folderList.clear()
 
 		LocationHelper.loadFolderList(this)?.let {
-			folderList.addAll(it)
+			// The built-in DropFiler folder is not a user destination
+			folderList.addAll(it.filterNot(LocationHelper::isDefaultFolder))
 		}
 		showFolderList()
 	}
 
 	/**
-	 * Shows the destinations, or the empty state when there is nothing to show.
+	 * Shows the destinations: Location Select (if enabled), the built-in DropFiler folder
+	 * (unless hidden) and the user's destinations. There is always at least one destination.
 	 */
 	private fun showFolderList() {
-		if (!PreferenceHelper.locationSelectEnabled && folderList.isEmpty()) {
-			adapter.items = listOf(CardItem.Message(
-				icon = R.drawable.fs_ic_folder_add,
-				title = getString(R.string.folder_list_empty_title),
-				body = getString(R.string.folder_list_empty_body),
-				actionText = getString(R.string.folder_list_add_destination),
-			))
-			// The empty state has its own add button
-			fab.visibility = View.GONE
-			return
-		}
-
-		fab.visibility = View.VISIBLE
 		val items = mutableListOf<CardItem>(CardItem.Header(getString(R.string.folder_list_section_destinations)))
 		if (PreferenceHelper.locationSelectEnabled) {
 			items.add(CardItem.Row(
@@ -295,6 +288,16 @@ class FolderListActivity : BaseActivity(), MiuixListFragment.Host {
 				title = getString(R.string.location_select_title),
 				summary = getString(R.string.location_select_summary),
 				icon = R.drawable.fs_ic_document,
+				clickable = false,
+			))
+		}
+		if (LocationHelper.destinations(this, folderList).any(LocationHelper::isDefaultFolder)) {
+			// Built in and cannot be removed or moved, so no delete button or drag handle
+			val folder = LocationHelper.DEFAULT_FOLDER
+			items.add(CardItem.Row(
+				key = folder,
+				title = displayName(folder),
+				summary = getString(R.string.folder_list_default_summary, displayPath(folder)),
 				clickable = false,
 			))
 		}

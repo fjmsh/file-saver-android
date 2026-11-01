@@ -36,6 +36,9 @@ class SaverActivityTest {
 	fun setUp() {
 		root().listFiles()?.forEach { it.deleteRecursively() }
 		prefs.edit().clear().commit()
+		// These tests are about the user's own destinations: hide the built-in DropFiler
+		// folder, which is then only used when there is no other destination (DefaultFolderTest)
+		prefs.edit().putBoolean(fjm.sh.dropfiler.util.LocationHelper.PREF_HIDE_DEFAULT_FOLDER, true).commit()
 		// Robolectric's MimeTypeMap may be empty; register what the tests use
 		shadowOf(MimeTypeMap.getSingleton()).apply {
 			addExtensionMimeTypeMapping("txt", "text/plain")
@@ -346,11 +349,13 @@ class SaverActivityTest {
 	}
 
 	@Test
-	fun noDestinations_finishesWithoutSaving() {
+	fun noDestinations_savesToDropFilerFolder() {
 		LocationHelperAccess.writeEmptyList()
 		val controller = launch(textIntent("nowhere"))
+		val saved = File(root(), "DropFiler/nowhere.txt")
+		assertTrue(waitFor { saved.length() > 0 })
+		assertEquals("nowhere", saved.readText())
 		assertTrue(waitFor { controller.get().isFinishing })
-		assertTrue(root().listFiles().isNullOrEmpty())
 	}
 
 	@Test

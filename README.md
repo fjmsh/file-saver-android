@@ -30,6 +30,9 @@ Android's share feature, or by choosing **Open with → DropFiler** in a file ma
 ## Features
 
 * Select any number of locations to save to
+* Works straight away: the built-in **DropFiler** folder (`/DropFiler`) is always available
+  and cannot be removed. It can be hidden in Settings ("Hide "DropFiler" save location")
+  while you have other destinations; with no other destination it is always used
 * Share (single or multiple files, text and links) **and** "Open with" for files
 * Save on a single click (saving is automatic when only one location is configured)
 * Direct Share targets for your saved locations

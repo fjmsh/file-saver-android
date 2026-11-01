@@ -96,6 +96,9 @@ class OpenWithTest {
 	fun setUp() {
 		root().listFiles()?.forEach { it.deleteRecursively() }
 		prefs.edit().clear().commit()
+		// These tests are about the user's own destinations: hide the built-in DropFiler
+		// folder, which is then only used when there is no other destination (DefaultFolderTest)
+		prefs.edit().putBoolean(fjm.sh.dropfiler.util.LocationHelper.PREF_HIDE_DEFAULT_FOLDER, true).commit()
 		TestProvider.entries.clear()
 		Robolectric.setupContentProvider(TestProvider::class.java, TestProvider.AUTHORITY)
 		shadowOf(MimeTypeMap.getSingleton()).apply {

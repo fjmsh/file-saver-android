@@ -295,3 +295,27 @@ behaviour, and coexistence with an installed Phone Saver.
   the API level. The overrides are now also in `color-night-v31/`. Covered by
   `AppearanceTest.dynamicColors_enabledInSettings_recolorSettingsScreen[_dark]`, which turns
   the setting on from the Settings screen and checks the switch color after the recreate.
+
+### Built-in "DropFiler" destination
+
+Before, sharing with no destinations ended with "Error loading save locations" (no stored
+list yet) or "Please open the app to add save locations".
+
+* `/DropFiler` (below the legacy storage root) is a built-in destination:
+  `LocationHelper.DEFAULT_FOLDER`. It is listed first on the main screen ("Default
+  location", no delete button or drag handle), in the share sheet, for Open with and in
+  Direct Share. It is created when it is first needed (`LocationHelper.prepareDestination`),
+  also again if it was deleted. No other destination is ever created automatically.
+* It is **not** stored in `FOLDER_STORE`, which still holds only the user's destinations in
+  the same format. Choosing `/DropFiler` in the folder picker does not add a duplicate.
+* New setting (Saving): "Hide "DropFiler" save location" (`hide_default_folder`, default
+  off). When on, the folder is hidden while at least one other destination exists. With no
+  other destination it is still shown and used. Toggling it republishes Direct Share targets.
+* `LocationHelper.destinations()` is the single source for the effective list.
+* Behaviour change: with the default visible, one user destination plus DropFiler means two
+  choices, so the share sheet asks instead of saving automatically. Turning on the hide
+  setting restores automatic saving to a single destination.
+* The main screen's empty state ("Welcome to DropFiler!") and the two "no locations" toasts
+  were removed, since there is always a destination now.
+* Tests: `DefaultFolderTest`. The other share and main-screen tests run with the default
+  folder hidden, so they keep testing the user's destinations as before.

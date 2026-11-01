@@ -35,6 +35,12 @@
 			android:key="lenient_regex"
 			android:summary="@string/pref_description_lenient_regex"
 			android:title="@string/pref_title_lenient_regex" />
+
+		<com.hchen.himiuix.preference.MiuixSwitchPreference
+			android:defaultValue="false"
+			android:key="hide_default_folder"
+			android:summary="@string/pref_description_hide_default_folder"
+			android:title="@string/pref_title_hide_default_folder" />
 	</com.hchen.himiuix.preference.MiuixPreferenceCategory>
 
 	<com.hchen.himiuix.preference.MiuixPreferenceCategory

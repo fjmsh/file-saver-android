@@ -22,6 +22,16 @@ No. DropFiler has its own application ID (`fjm.sh.dropfiler`), so it installs as
 * Use the `Add` button to select locations to save to
 * Check the `Settings` to configure the application to your needs
 
+You can also share to DropFiler straight away: until you add a location, files are saved to
+the built-in `DropFiler` folder (`/DropFiler`, created when it is first used).
+
+### What is the "DropFiler" save location? Can I remove it?
+
+It is a built-in destination, so there is always somewhere to save. It cannot be removed,
+but you can turn on `Hide "DropFiler" save location` in Settings to hide it while you have
+other locations. If you have no other location, it is still used. Files already saved there
+are not touched.
+
 ### Why can't I select my SD card?
 
 As each manufacturer manages the SD card, it is difficult to implement SD card file management in a way that works for every device. This is currently the biggest feature / bug report for DropFiler (and Phone Saver before it). 

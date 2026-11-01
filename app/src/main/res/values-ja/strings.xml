@@ -13,8 +13,6 @@
 
 	<!-- Folder list -->
 
-	<string name="folder_list_empty_title">&appname; へようこそ!</string>
-	<string name="folder_list_empty_body">下のボタンで保存する場所を追加してください。</string>
 
 	<!-- Folder select -->
 	<string name="title_activity_folder_select">フォルダーの選択</string>
@@ -23,8 +21,6 @@
 	<string name="toast_save_successful">正常に保存しました</string>
 	<string name="toast_save_in_progress">保存しています</string>
 	<string name="toast_save_failed">保存に失敗しました</string>
-	<string name="toast_save_init_error">保存場所の読み込み時にエラーが発生しました</string>
-	<string name="toast_save_init_no_locations">アプリを開いて保存場所を追加してください</string>
 	<string name="downloader_description">%1$s を保存中</string>
 
 	<!-- Debug / Error -->
@@ -138,4 +134,8 @@
 	<string name="folder_list_move_up">上へ移動</string>
 	<string name="folder_list_move_down">下へ移動</string>
 	<string name="folder_list_moved_announcement">%1$s を %3$d 件中 %2$d 番目に移動しました</string>
+	<string name="folder_list_default_summary">%1$s · デフォルトの保存場所</string>
+	<string name="toast_default_folder_hidden">&appname; は組み込みの保存場所です。表示するには、設定で「「&appname;」保存場所を非表示」をオフにしてください。</string>
+	<string name="pref_title_hide_default_folder">「&appname;」保存場所を非表示</string>
+	<string name="pref_description_hide_default_folder">ほかの保存場所を追加しているときは、組み込みの &appname; フォルダーを非表示にします。ほかに保存場所がない場合は表示されます。</string>
 </resources>

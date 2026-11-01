@@ -36,6 +36,9 @@ class FolderListActivityTest {
 	fun setUp() {
 		root().listFiles()?.forEach { it.deleteRecursively() }
 		prefs.edit().clear().commit()
+		// These tests are about the user's own destinations: hide the built-in DropFiler
+		// folder, which is then only used when there is no other destination (DefaultFolderTest)
+		prefs.edit().putBoolean(fjm.sh.dropfiler.util.LocationHelper.PREF_HIDE_DEFAULT_FOLDER, true).commit()
 		// Mark the change log as seen
 		de.cketti.library.changelog.ChangeLog(context).skipLogDialog()
 	}
@@ -50,12 +53,14 @@ class FolderListActivityTest {
 		(activity.findViewById<RecyclerView>(R.id.list).adapter as CardListAdapter).items
 
 	@Test
-	fun noDestinations_showsEmptyState() {
+	fun noDestinations_showsBuiltInDropFilerFolder() {
+		// Hidden in setUp, but there is no other destination, so it is still shown
 		val activity = launch()
-		val items = items(activity)
-		assertEquals(1, items.size)
-		assertTrue(items[0] is CardItem.Message)
-		assertEquals(View.GONE, activity.findViewById<View>(R.id.fab).visibility)
+		val rows = items(activity).filterIsInstance<CardItem.Row>()
+		assertEquals(listOf("/DropFiler"), rows.map { it.key })
+		assertEquals(0, rows[0].actionIcon)
+		assertFalse(rows[0].draggable)
+		assertEquals(View.VISIBLE, activity.findViewById<View>(R.id.fab).visibility)
 	}
 
 	@Test
