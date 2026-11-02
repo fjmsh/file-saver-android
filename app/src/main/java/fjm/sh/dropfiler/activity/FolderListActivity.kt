@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hchen.himiuix.springback.SpringBackLayout
 import fjm.sh.dropfiler.R
 import fjm.sh.dropfiler.ui.CardItem
+import fjm.sh.dropfiler.ui.AppBarTitleIcon
 import fjm.sh.dropfiler.ui.CardListAdapter
 import fjm.sh.dropfiler.ui.MiuixListFragment
 import fjm.sh.dropfiler.util.ChangeLogHelper
@@ -145,6 +146,8 @@ class FolderListActivity : BaseActivity(), MiuixListFragment.Host {
 		setContentView(R.layout.folder_list_activity)
 
 		val appBar = setUpAppBar(getString(R.string.app_name), showUp = false)
+		// [three-folder symbol] DropFiler, tinted with the current accent (default or Monet)
+		AppBarTitleIcon.apply(appBar, R.drawable.ic_dropfiler_symbol)
 		appBar.toolbar.inflateMenu(R.menu.folder_list_menu)
 		appBar.toolbar.setOnMenuItemClickListener { onOptionsItemSelected(it) }
 		showOverflowMenuIcons(appBar.toolbar.menu)
