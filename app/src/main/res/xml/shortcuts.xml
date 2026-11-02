@@ -2,8 +2,8 @@
 <!-- Direct Share (sharing shortcuts) for Android 10+. The dynamic shortcuts themselves are
 	 published by DirectShareHelper with the category below. -->
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
-	<share-target android:targetClass="fjm.sh.filesaver.activity.SaverActivity">
+	<share-target android:targetClass="fjm.sh.dropfiler.activity.SaverActivity">
 		<data android:mimeType="*/*" />
-		<category android:name="fjm.sh.filesaver.category.SAVE_TO_FOLDER" />
+		<category android:name="fjm.sh.dropfiler.category.SAVE_TO_FOLDER" />
 	</share-target>
 </shortcuts>

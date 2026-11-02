@@ -1,8 +1,10 @@
-## Phone Saver Privacy Policy
+## DropFiler Privacy Policy
+
+DropFiler is a separately branded fork of Phone Saver; this policy is based on Phone Saver's.
 
 
 This is the developer's policy on how your personal information may be collected, used, disclosed and secured. These policies are stated to ensure you know what personal details you may or may not disclose when the software is being utilized and the choices you have associated with that data. 
-If you decide to continue using this software, it means you accept all terms and conditions stated by the developer in this policy. Kindly note that this privacy policy is restricted only to Phone Saver software and the developer is not and will not be liable to be held in account for the privacy practices of any third-party tools or services that may be contained in the software.
+If you decide to continue using this software, it means you accept all terms and conditions stated by the developer in this policy. Kindly note that this privacy policy is restricted only to DropFiler software and the developer is not and will not be liable to be held in account for the privacy practices of any third-party tools or services that may be contained in the software.
 
 ---
 
@@ -36,7 +38,7 @@ Crash reports collected by Google are used for the sole purpose of assisting the
 
 ## Security Of Data
 
-There are no security risks that may likely occur while using Phone-Saver software except your phone is physically compromised. The developers of Phone Saver assume no responsibility for data integrity issues caused by using this application.
+There are no security risks that may likely occur while using DropFiler software except your phone is physically compromised. The developers of DropFiler assume no responsibility for data integrity issues caused by using this application.
 
 ---
 
@@ -50,14 +52,14 @@ This privacy policy statement is not final and is subject to changes at later ti
 
 ## Disclaimer   
 
-Phone Saver is developed in good faith to help end users copy and move and save any kind of file between storage locations swiftly and easily. The developer assumes no responsibility for any losses and/or damages of data that are in connection with the use of this software. 
+DropFiler is developed in good faith to help end users copy and move and save any kind of file between storage locations swiftly and easily. The developer assumes no responsibility for any losses and/or damages of data that are in connection with the use of this software. 
 
 ---
 
 
 ## Contact Us
 
-Phone-saver app would certainly improve with contributions from the open source community. Feel free to make contributions and suggestions to this project either by opening an issue or implementing opening pull requests of those suggestions and improvements. For further inquiry regarding this privacy policy or any other issue relating to the development or within the circumference of Phone-Saver software, please contact the developer directly via [email](michael@standen.link) or by opening an issue on the app's official repository [here](https://github.com/ScreamingHawk/phone-saver/issues/new) on Github. Please also check if the issue you want to open hasn't been previously open.
+DropFiler would certainly improve with contributions from the open source community. Feel free to make contributions and suggestions to this project either by opening an issue or implementing opening pull requests of those suggestions and improvements. For further inquiry regarding this privacy policy or any other issue relating to the development or within the circumference of DropFiler software, please open an issue on the app's repository [here](https://github.com/fjmsh/file-saver-android/issues/new) on Github. Please also check if the issue you want to open hasn't been previously open.
 
 
 

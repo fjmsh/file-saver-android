@@ -35,6 +35,12 @@
 			android:key="lenient_regex"
 			android:summary="@string/pref_description_lenient_regex"
 			android:title="@string/pref_title_lenient_regex" />
+
+		<com.hchen.himiuix.preference.MiuixSwitchPreference
+			android:defaultValue="false"
+			android:key="hide_default_folder"
+			android:summary="@string/pref_description_hide_default_folder"
+			android:title="@string/pref_title_hide_default_folder" />
 	</com.hchen.himiuix.preference.MiuixPreferenceCategory>
 
 	<com.hchen.himiuix.preference.MiuixPreferenceCategory
@@ -46,12 +52,6 @@
 			android:key="follow_redirects"
 			android:summary="@string/pref_description_follow_redirects"
 			android:title="@string/pref_title_follow_redirects" />
-
-		<com.hchen.himiuix.preference.MiuixSwitchPreference
-			android:defaultValue="false"
-			android:key="special_imgur"
-			android:summary="@string/pref_description_special_imgur"
-			android:title="@string/pref_title_special_imgur" />
 	</com.hchen.himiuix.preference.MiuixPreferenceCategory>
 
 	<com.hchen.himiuix.preference.MiuixPreferenceCategory

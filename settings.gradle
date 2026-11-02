@@ -14,7 +14,7 @@ dependencyResolutionManagement {
 	}
 }
 
-rootProject.name = 'phone-saver'
+rootProject.name = 'DropFiler-Android'
 
 include ':app'
 

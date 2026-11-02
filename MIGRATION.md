@@ -1,15 +1,20 @@
 # 6.0 migration summary
 
 This document records what changed when Phone Saver was modernised with
-[Miuix XML](https://github.com/fjmd3v/miuix-xml), what was deliberately kept, how it was
+[Miuix XML](https://github.com/fjmsh/miuix-xml), what was deliberately kept, how it was
 verified, and the known limitations.
+
+> The app was later renamed **DropFiler** and moved to the application ID
+> `fjm.sh.dropfiler`, and "Open with" support was added. See
+> [DropFiler rename and "Open with"](#dropfiler-rename-and-open-with) at the end. The 6.0
+> sections below are kept as a historical record (the `fjmd3v` account is now `fjmsh`).
 
 ## Non-negotiables (kept)
 
 | Requirement | Status |
 | --- | --- |
 | `targetSdkVersion 28` | Kept. Verified in the built APK with `aapt2 dump badging` (`targetSdkVersion:'28'`). |
-| `applicationId link.standen.michael.phonesaver` | Kept (verified in APK). |
+| `applicationId link.standen.michael.phonesaver` | Kept in 6.0 (verified in APK). Changed later for DropFiler, see below. |
 | No Jetpack Compose | Views/XML only. |
 | Storage architecture | Unchanged `java.io` + `DownloadManager` + SAF "location select". No `MANAGE_EXTERNAL_STORAGE`. |
 | Destination data | Same `FOLDER_STORE` JSON file and format. The list order is the user's order (see "Reordering" below). |
@@ -196,3 +201,128 @@ Not covered by automated tests (requires devices):
 * Sharing shortcuts may also be shown by some launchers when long-pressing the app icon;
   launching one opens the app.
 * Miuix XML seek bars cannot have a minimum other than 0 below API 26 (not used here).
+
+## DropFiler rename and "Open with"
+
+The app is now **DropFiler**, a separately branded fork of Phone Saver by Michael Standen
+(ScreamingHawk). Original attribution and the MIT `LICENSE` are kept; Miuix XML (LGPL 2.1)
+is credited unchanged.
+
+| | Before | After |
+| --- | --- | --- |
+| Display name | Phone Saver | DropFiler (all locales) |
+| `applicationId` / `namespace` | `fjm.sh.filesaver` (earlier `link.standen.michael.phonesaver`) | `fjm.sh.dropfiler` |
+| Kotlin package | `fjm.sh.filesaver.*` | `fjm.sh.dropfiler.*` (same subpackages) |
+| Application class | `FileSaverApplication` | `DropFilerApplication` |
+| Settings fragment | `SettingsActivity$PhoneSaverPreferenceFragment` | `SettingsActivity$DropFilerPreferenceFragment` |
+| Sharing shortcut category | `fjm.sh.filesaver.category.SAVE_TO_FOLDER` | `fjm.sh.dropfiler.category.SAVE_TO_FOLDER` |
+| GitHub menu item | fjmd3v | fjmsh (https://github.com/fjmsh) |
+| "Unsupported content" feature request link | ScreamingHawk/phone-saver issues | this repository's issues (`@string/issues_new_url`) |
+| Miuix XML submodule URL | github.com/fjmd3v/miuix-xml | github.com/fjmsh/miuix-xml (same pinned commit) |
+| Gradle root project | `phone-saver` | `DropFiler-Android` |
+| CI debug APK name | `phone-saver-<version>-debug-<run>.apk` | `dropfiler-<version>-debug-<run>.apk` |
+
+Unchanged: `minSdk 21`, **`targetSdk 28`**, `compileSdk 36`, versionCode 37 /
+versionName 6.0.0, AGP/Gradle/Kotlin and all dependencies, signing configuration, the
+storage implementation, preference keys and the `FOLDER_STORE` format. Internal style
+resource names (`Theme.FileSaver`, `Widget.FileSaver.*`) are not user visible and were
+kept to avoid churn.
+
+Because the application ID changed, DropFiler installs as a **new app** next to Phone
+Saver; destinations and settings are not migrated.
+
+### "Open with" (`ACTION_VIEW`)
+
+`SaverActivity` has a separate `ACTION_VIEW` filter (`DEFAULT` category, `content` and
+`file` schemes, `*/*`). No `BROWSABLE`, no http(s), no `EDIT` / `GET_CONTENT` /
+`OPEN_DOCUMENT`. The SEND / SEND_MULTIPLE filters, Direct Share and shortcuts are unchanged.
+
+The file is taken from the intent data. Before showing the destination sheet, DropFiler
+checks on a background thread that the URI can be opened for reading (missing URI, other
+schemes, revoked grants, missing files, folders and failing providers end with a "cannot
+read this file" toast and a failure notification). The MIME type comes from the intent,
+then `ContentResolver.getType()`, then the name's extension, otherwise
+`application/octet-stream`. Then the file goes through the existing `getFilename` /
+`saveUri` path, so filename sanitisation, duplicate handling, "location select" and the
+result notification are shared with Share. The source is only opened for reading.
+
+Also hardened for both Share and Open with: provider `query()` failures fall back to the
+URI name, and a `SecurityException` while copying is reported as a failed save instead of
+crashing.
+
+### Verification
+
+| Check | Result |
+| --- | --- |
+| `assembleDebug`, `lintDebug` | OK; lint 0 errors, the same 9 pre-existing warnings |
+| APK `aapt2 dump badging` | `package: name='fjm.sh.dropfiler'`, versionCode 37, versionName 6.0.0, minSdk 21, **targetSdk 28**, label DropFiler |
+| Merged manifest | All components under `fjm.sh.dropfiler.*`; VIEW filter present; SEND filters unchanged |
+| Robolectric | 523 run, 0 failures at the time of the rename (565 after the UI follow-ups below) |
+
+`OpenWithTest` covers implicit `ACTION_VIEW` resolution for `content://` with
+`application/pdf`, `image/jpeg`, `video/mp4`, `application/zip`, `application/octet-stream`,
+`text/plain`, APK and a non-standard type, plus `file://`. It checks that web links and
+EDIT/GET_CONTENT/OPEN_DOCUMENT do not resolve and that SEND still resolves. It also covers
+byte-exact copies (including 6 MB), the destination sheet and its subtitle, cancel, missing
+MIME type / extension / display name, repeated invocations with duplicate handling, and
+failures (null URI, revoked grant, missing file, failing provider, folder, explicit web URL).
+
+**Not tested on a device or emulator** (no KVM in the build environment): the real
+"Open with" dialogs of file managers (including the system Files app), real URI grant
+behaviour, and coexistence with an installed Phone Saver.
+
+### UI follow-ups
+
+* Overflow menu: "Change Log" is now "Changelog" and "Credits" is now "About". Every item
+  (Settings, GitHub, Changelog, About) has a rounded-square icon tile like the list rows
+  (`fs_menu_ic_*`: 32dp tile, 10dp corners, 20dp Material/Octicons glyph on
+  `?attr/fsColorAccentContainer`).
+* Menu width: AppCompat gives popup menu items a 196dp minimum width, which left a lot of
+  empty space. `res/layout/abc_popup_menu_item_layout.xml` is a copy of the AppCompat 1.7.1
+  layout with a 157dp minimum (-20%). All English items fit (widest ~142dp); it is only a
+  minimum, so longer translations still widen the menu. Re-check the copy when upgrading
+  AppCompat.
+* About: the line below the version reads "Save anywhere. Organize effortlessly." followed
+  by "A modern Android file-saving utility, based on the app "Phone Saver" by Michael
+  Standen", linking to https://github.com/ScreamingHawk (translated in fr/ja/zh-TW).
+* Main screen and share sheet: muted hairline dividers between destination rows
+  (`@color/fs_row_divider`, from the title text to the row end), and the same dividers in
+  the folder picker (`CardListAdapter(showDividers = true)`).
+* "Save Destinations" / "Add Destination" (English title case).
+* Fix: with dynamic colors enabled, the Settings screen kept the Miuix blue in **dark
+  mode**. The accent overrides of Miuix colors lived in `color-v31/`, but the library
+  defines the same colors in `values-night/`, and the night qualifier takes precedence over
+  the API level. The overrides are now also in `color-night-v31/`. Covered by
+  `AppearanceTest.dynamicColors_enabledInSettings_recolorSettingsScreen[_dark]`, which turns
+  the setting on from the Settings screen and checks the switch color after the recreate.
+
+### Built-in "DropFiler" destination
+
+Before, sharing with no destinations ended with "Error loading save locations" (no stored
+list yet) or "Please open the app to add save locations".
+
+* `/DropFiler` (below the legacy storage root) is a built-in destination:
+  `LocationHelper.DEFAULT_FOLDER`. It is listed first on the main screen ("Default
+  location", no delete button or drag handle), in the share sheet, for Open with and in
+  Direct Share. It is created when it is first needed (`LocationHelper.prepareDestination`),
+  also again if it was deleted. No other destination is ever created automatically.
+* It is **not** stored in `FOLDER_STORE`, which still holds only the user's destinations in
+  the same format. Choosing `/DropFiler` in the folder picker does not add a duplicate.
+* New setting (Saving): "Hide "DropFiler" save location" (`hide_default_folder`, default
+  off). When on, the folder is hidden while at least one other destination exists. With no
+  other destination it is still shown and used. Toggling it republishes Direct Share targets.
+* `LocationHelper.destinations()` is the single source for the effective list.
+* Behaviour change: with the default visible, one user destination plus DropFiler means two
+  choices, so the share sheet asks instead of saving automatically. Turning on the hide
+  setting restores automatic saving to a single destination.
+* The main screen's empty state ("Welcome to DropFiler!") and the two "no locations" toasts
+  were removed, since there is always a destination now.
+* Tests: `DefaultFolderTest`. The other share and main-screen tests run with the default
+  folder hidden, so they keep testing the user's destinations as before.
+
+### "Save Imgur images" removed
+
+The Links setting "Save Imgur images" (`special_imgur`, off by default) and the feature it
+controlled (`ImgurHelper`: saving the first image of a shared Imgur page) were removed.
+Imgur links are now saved like any other link. A stored `special_imgur` value is ignored
+and left untouched, like the earlier `hide_support`.

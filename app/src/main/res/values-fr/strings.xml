@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE resources [
-	<!ENTITY appname "Phone Saver">
+	<!ENTITY appname "DropFiler">
 	<!ENTITY author "Michael Standen">
 	]>
 
@@ -10,12 +10,10 @@
 	<!-- Menu -->
 	<string name="action_settings">Paramètres</string>
 	<string name="action_change_log">Historique des changements</string>
-	<string name="action_credits">Crédits</string>
+	<string name="action_credits">À propos</string>
 
 	<!-- Folder list -->
 
-	<string name="folder_list_empty_title">Bienvenue sur Phone Saver!</string>
-	<string name="folder_list_empty_body">Veuillez ajouter un lieu de sauvegarde avec le bouton ci-dessous.</string>
 
 	<string name="location_select_label">* Selectionner lieu *</string>
 
@@ -26,8 +24,6 @@
 	<string name="toast_save_successful">Sauvegardé avec succès.</string>
 	<string name="toast_save_in_progress">Sauvegarde en cours…</string>
 	<string name="toast_save_failed">Sauvegarde échouée.</string>
-	<string name="toast_save_init_error">Erreur de chargement des lieus de sauvegarde.</string>
-	<string name="toast_save_init_no_locations">Veuillez ouvrir l\'application pour ajouter des lieus de sauvegarde.</string>
 	<string name="toast_save_file_exists_overwrite">Ecrasement du fichier présent à cet endroit…</string>
 	<string name="toast_save_file_exists_fail">Impossible de sauvegarder, ce fichier existe déjà.</string>
 	<string name="toast_save_file_exists_self_abort">Abandon! Il semblerait que vous remplacez ce fichier par lui-même.</string>
@@ -38,8 +34,8 @@
 	<!-- Debug / Error -->
 	<string name="not_supported_content_type">Type de contenu inacceptable</string>
 	<string name="not_supported" tools:keep="@string/not_supported">Veuillez &lt;a href="%1$s">faire une demande d\'ajout de fonctionnalité&lt;/a> avec ce
-		type de contenu afin que &author; puisse ajouter un support officiel. &lt;br/>&lt;br/>Vous pouvez également activer le paramètre \"sauvegarde forcée\"
-		setting pour forcer &appname; à essayer de le sauvegarder.</string>
+		type de contenu afin qu\'un support officiel puisse être ajouté. &lt;br/>&lt;br/>Vous pouvez également activer le paramètre \"sauvegarde forcée\"
+		pour forcer &appname; à essayer de le sauvegarder.</string>
 
 	<!-- Loading -->
 	<string name="loading_title">Test du support…</string>
@@ -49,17 +45,17 @@
 	<string name="credits_version">v%1$s</string>
 	<string name="title_activity_credits">A propos de &appname;</string>
 	<string name="logo_description">Logo</string>
-	<string name="credits_creator">par <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">&appname; est une simple application pour sauvegarder
-		des fichiers sur votre téléphone via la fonctionnalité partager.
-	</string>
-	<string name="credits_content2">Vous pouvez accéder au code source, faire connaitre des bugs, et demander des fonctionnalités sur
-		<a href="https://github.com/ScreamingHawk/phone-saver">Github</a>.
-	</string>
+	<string name="credits_creator">Enregistrez partout. Organisez sans effort.\n\nUn utilitaire Android moderne d\'enregistrement de fichiers, basé sur l\'application « Phone Saver » de <a href="https://github.com/ScreamingHawk">&author;</a></string>
+	<string name="credits_content1">&appname; est une simple application pour sauvegarder des copies de
+		fichiers sur votre téléphone via la fonctionnalité partager ou \"Ouvrir avec\".</string>
+	<string name="credits_content2">&appname; est un fork distinct de Phone Saver, développé à l\'origine par
+		&author; (ScreamingHawk). Le projet original est disponible sur
+		<a href="https://github.com/ScreamingHawk/phone-saver">github.com/ScreamingHawk/phone-saver</a>. Le code original reste
+		soumis à sa licence MIT.</string>
 	<string name="credits_content3">Cette application est complètement open source; elle a pour license la
 		<a href="https://tldrlegal.com/license/mit-license">license MIT</a>.
 	</string>
-	<string name="credits_content_translator">Cette traduction de &appname; a été proposée par
+	<string name="credits_content_translator">Cette traduction de Phone Saver a été proposée par
 		<a href="https://github.com/Paulao17">Paul Alnet</a>.
 	</string>
 
@@ -116,9 +112,6 @@
 		même s\'il n\'est pas explicitement recevable. ATTENTION: Sauvegarder avec ce paramètre activé peut avoir des effets néfastes.
 	</string>
 
-	<string name="pref_title_special_imgur">Sauvegarder les images Imgur</string>
-	<string name="pref_description_special_imgur">Sauvegarder la première image lors du partage d\'un lien Imgur.
-	</string>
 
 	<string name="pref_title_log_to_user">Afficher les informations de debug</string>
 	<array name="pref_list_title_log_to_user">
@@ -189,7 +182,7 @@
 	<string name="pref_title_about">À propos de &appname;</string>
 	<string name="credits_section_about">À propos</string>
 	<string name="credits_section_licenses">Licences open source</string>
-	<string name="credits_miuix_body">Composants d\'interface par HChenX, sous licence <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU LGPL 2.1</a>. Source : <a href="https://github.com/fjmd3v/miuix-xml">github.com/fjmd3v/miuix-xml</a></string>
+	<string name="credits_miuix_body">Composants d\'interface par HChenX, sous licence <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU LGPL 2.1</a>. Source : <a href="https://github.com/fjmsh/miuix-xml">github.com/fjmsh/miuix-xml</a></string>
 	<string name="credits_libraries_title">Autres bibliothèques</string>
 	<string name="credits_libraries_body">AndroidX (Apache 2.0), Gson (Apache 2.0), ckChangeLog (Apache 2.0), Kotlin (Apache 2.0).</string>
 	<string name="dialog_negative">Annuler</string>
@@ -211,7 +204,8 @@
 	</array>
 
 	<!-- Save result notifications -->
-	<string name="action_github_description">Ouvrir fjmd3v sur GitHub</string>
+	<string name="action_github_description">Ouvrir fjmsh sur GitHub</string>
+	<string name="toast_open_with_unreadable">&appname; ne peut pas lire ce fichier. L\'application qui l\'a ouvert n\'en a peut-être pas autorisé l\'accès.</string>
 	<string name="toast_no_browser">Aucune application pour ouvrir %1$s</string>
 	<string name="notification_channel_name">Résultats d\'enregistrement</string>
 	<string name="notification_channel_description">Indique si un élément partagé a été enregistré</string>
@@ -245,4 +239,8 @@
 	<string name="folder_list_move_up">Monter</string>
 	<string name="folder_list_move_down">Descendre</string>
 	<string name="folder_list_moved_announcement">%1$s déplacé en position %2$d sur %3$d</string>
+	<string name="folder_list_default_summary">%1$s · Emplacement par défaut</string>
+	<string name="toast_default_folder_hidden">&appname; est déjà un emplacement de sauvegarde intégré. Désactivez « Masquer l\'emplacement « &appname; » » dans les paramètres pour l\'afficher.</string>
+	<string name="pref_title_hide_default_folder">Masquer l\'emplacement « &appname; »</string>
+	<string name="pref_description_hide_default_folder">Masque le dossier &appname; intégré lorsque vous avez ajouté d\'autres emplacements de sauvegarde. S\'il n\'y en a pas d\'autres, il reste affiché.</string>
 </resources>

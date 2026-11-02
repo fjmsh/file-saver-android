@@ -105,4 +105,17 @@
 			app:srcCompat="@drawable/fs_ic_drag_handle"
 			tools:visibility="visible" />
 	</LinearLayout>
+
+	<!-- Hairline between consecutive rows of a group (lists with dividers only).
+		 Starts at the title text, like Miuix/HyperOS lists. -->
+	<View
+		android:id="@+id/row_divider"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/fs_row_divider_height"
+		android:layout_gravity="top"
+		android:layout_marginStart="@dimen/fs_row_divider_inset_start"
+		android:layout_marginEnd="@dimen/fs_row_padding_horizontal"
+		android:background="@color/fs_row_divider"
+		android:importantForAccessibility="no"
+		android:visibility="gone" />
 </com.hchen.himiuix.widget.MiuixCardView>

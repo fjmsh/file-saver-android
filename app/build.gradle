@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-	namespace 'fjm.sh.filesaver'
+	namespace 'fjm.sh.dropfiler'
 	// compileSdk is only the API level the code is compiled against. It is raised so that
 	// current AndroidX and Miuix XML can be built; it does not change runtime behaviour.
 	compileSdk 36
 
 	defaultConfig {
-		applicationId "fjm.sh.filesaver"
+		applicationId "fjm.sh.dropfiler"
 		// API 21 is the minimum supported by current AndroidX (appcompat 1.7) and by
 		// Miuix XML after the API audit documented in README.md (previously 15).
 		minSdk 21

@@ -5,6 +5,10 @@
 	<issue id="UnusedResources">
 		<ignore regexp="miuix_|dialog_positive|dialog_color_|color_hue|color_saturation|color_lightness|color_alpha|changelog_master" />
 	</issue>
+	<!-- Deliberate override of AppCompat's popup menu item layout (smaller minimum width). -->
+	<issue id="PrivateResource">
+		<ignore path="src/main/res/layout/abc_popup_menu_item_layout.xml" />
+	</issue>
 	<!-- No core-ktx dependency on purpose; plain AndroidX APIs are used. -->
 	<issue id="UseKtx" severity="ignore" />
 	<issue id="KtxExtensionAvailable" severity="ignore" />

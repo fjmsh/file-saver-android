@@ -38,7 +38,7 @@ jobs:
       - name: Rename APK
         run: |
           VERSION=$(grep -m1 'versionName' app/build.gradle | sed -E 's/.*"(.*)".*/\1/')
-          APK="phone-saver-${VERSION}-debug-${{ github.run_number }}.apk"
+          APK="dropfiler-${VERSION}-debug-${{ github.run_number }}.apk"
           mv app/build/outputs/apk/debug/app-debug.apk "app/build/outputs/apk/debug/${APK}"
           echo "APK_NAME=${APK}" >> "$GITHUB_ENV"
 

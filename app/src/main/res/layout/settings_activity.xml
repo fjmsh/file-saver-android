@@ -8,7 +8,7 @@
 
 	<androidx.fragment.app.FragmentContainerView
 		android:id="@+id/fragment_container"
-		android:name="fjm.sh.filesaver.activity.SettingsActivity$PhoneSaverPreferenceFragment"
+		android:name="fjm.sh.dropfiler.activity.SettingsActivity$DropFilerPreferenceFragment"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" />
 </com.hchen.himiuix.MiuixAppBar>

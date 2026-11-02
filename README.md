@@ -1,13 +1,20 @@
-# Phone Saver
+# DropFiler
 
-An android app that lets you save files to your phone using the share function.
+An Android app that saves copies of files to folders on your phone, using the Share menu
+or **Open with**.
 
-<a href="https://play.google.com/store/apps/details?id=link.standen.michael.phonesaver" target="_blank">
-	<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="80"/>
-</a>
-<a href="https://f-droid.org/repository/browse/?fdid=link.standen.michael.phonesaver" target="_blank">
-	<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/>
-</a>
+DropFiler is a separately branded fork of [Phone Saver](https://github.com/ScreamingHawk/phone-saver),
+originally developed by Michael Standen (ScreamingHawk). See [Credits](#credits).
+
+| | |
+| --- | --- |
+| App name | DropFiler |
+| Application ID | `fjm.sh.dropfiler` |
+| Developer | [fjmsh](https://github.com/fjmsh) · [fjm.dev](https://fjm.dev) · [fjm.sh](https://fjm.sh) |
+| Source | this repository (currently `fjmsh/file-saver-android`; it is planned to become `fjmsh/DropFiler-Android`) |
+
+DropFiler is not (yet) published on Google Play or F-Droid. The store listings for
+`link.standen.michael.phonesaver` belong to the original Phone Saver app.
 
 ## Description
 
@@ -17,11 +24,16 @@ That screenshot of that Snapchat that you want to hide in a secret folder.
 
 Well look no further!
 
-Set up any number of locations on your mobile, and save to them with a single click when using Android's share feature.
+Set up any number of locations on your mobile, and save to them with a single click when using
+Android's share feature, or by choosing **Open with → DropFiler** in a file manager.
 
 ## Features
 
 * Select any number of locations to save to
+* Works straight away: the built-in **DropFiler** folder (`/DropFiler`) is always available
+  and cannot be removed. It can be hidden in Settings ("Hide "DropFiler" save location")
+  while you have other destinations; with no other destination it is always used
+* Share (single or multiple files, text and links) **and** "Open with" for files
 * Save on a single click (saving is automatic when only one location is configured)
 * Direct Share targets for your saved locations
 * Configure whether or not gallery and music apps are notified of saves
@@ -33,6 +45,29 @@ Set up any number of locations on your mobile, and save to them with a single cl
 * Light and dark themes, with optional dynamic (Material You) colors on Android 12+
 * Automated bug reports for requesting support for file types
 
+## "Open with DropFiler"
+
+Besides the Share menu, DropFiler is offered as an **Open with** app for files that other
+apps (e.g. file managers) open with a standard Android `ACTION_VIEW` intent.
+
+* "Open with" in DropFiler means **save a copy** of the file to one of your destinations.
+  DropFiler does not display, play, edit or run files, and never modifies, moves or deletes
+  the original.
+* It uses the same destination sheet, filename handling, duplicate-file setting and result
+  notification as sharing a single file.
+* Files are read through the `content://` URI and the temporary read permission granted by
+  the opening app. `file://` URIs are accepted as a best effort only (they are rare on
+  Android 7+ and use the existing legacy storage permission). Web links are not handled.
+* If the file cannot be read (no permission granted, the file was deleted, a folder was
+  passed, the provider refused access), DropFiler says so and saves nothing.
+
+Limitations: DropFiler only appears where the opening app uses a standard implicit
+`ACTION_VIEW` intent with a MIME type and a readable URI. Apps that open files in their own
+viewer, use proprietary actions, or do not grant access to the file will not list DropFiler,
+and DropFiler cannot change that. Because it is not a viewer, avoid choosing it as the
+**default** ("Always") app for a file type; you can clear that in Android's app settings
+(Open by default → Clear defaults).
+
 ## Un-Features
 
 * No sign up
@@ -43,7 +78,7 @@ Set up any number of locations on your mobile, and save to them with a single cl
 ## User interface: Miuix XML
 
 Since version 6.0 the interface follows the Xiaomi HyperOS design language using
-[Miuix XML (HiMiuix)](https://github.com/fjmd3v/miuix-xml), a traditional Android View/XML
+[Miuix XML (HiMiuix)](https://github.com/fjmsh/miuix-xml), a traditional Android View/XML
 component library. The app does **not** use Jetpack Compose.
 
 Miuix XML components used:
@@ -65,7 +100,7 @@ The library is included as a git submodule (`miuix-xml/`) and built as the Gradl
 `:HiMiuix`, as recommended by the library. Clone with submodules:
 
 ```shell
-git clone --recurse-submodules https://github.com/fjmd3v/file-saver-android.git
+git clone --recurse-submodules https://github.com/fjmsh/file-saver-android.git
 # or, in an existing clone
 git submodule update --init
 ```
@@ -74,7 +109,7 @@ The submodule is pinned to a specific commit, so builds are reproducible.
 
 ### Blur
 
-Miuix XML can use Xiaomi's private View blur. Phone Saver only allows it when the device
+Miuix XML can use Xiaomi's private View blur. DropFiler only allows it when the device
 provides those methods **and** Android reports that blur is enabled
 (`WindowManager.isCrossWindowBlurEnabled()`, Android 12+). Everywhere else, including all
 non-Xiaomi devices, the app bar uses a plain surface color. Navigation never depends on
@@ -125,8 +160,35 @@ this app).
 
 The app deliberately keeps `targetSdkVersion 28`. **Do not raise it.** Raising it to 29+
 opts the app into scoped storage, which breaks saving to arbitrary folders with plain
-`java.io.File` access — the core of how Phone Saver works. `compileSdk` is higher only so
+`java.io.File` access — the core of how DropFiler works. `compileSdk` is higher only so
 that current libraries compile; it does not change runtime behaviour.
+
+## Installing alongside Phone Saver
+
+DropFiler uses its own application ID, `fjm.sh.dropfiler`. To Android it is a **new,
+separate app**: it installs next to the original Phone Saver (`link.standen.michael.phonesaver`)
+instead of updating it, and has its own data, permissions and signing identity.
+
+* Phone Saver's destinations and settings are **not** transferred; set up your destinations
+  again in DropFiler. DropFiler does not try to read another app's private data.
+* Files you saved earlier stay where they are; DropFiler can save to the same folders.
+* Future DropFiler updates install over each other only while the application ID stays
+  `fjm.sh.dropfiler`, the APKs are signed with the same key and `versionCode` increases.
+
+## Launcher icon
+
+The final DropFiler icon has not been supplied yet, so the app still uses the existing
+launcher icon. To replace it, provide artwork and update these resources:
+
+| Resource | Notes |
+| --- | --- |
+| `app/src/main/res/mipmap-{mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}/ic_launcher.png` | Square/legacy icon: 48, 72, 96, 144, 192 px |
+| `app/src/main/res/mipmap-{…}/ic_launcher_round.png` | Round icon (`android:roundIcon`), same sizes |
+| `app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml` and `ic_launcher_round.xml` | Not present yet. Add an `<adaptive-icon>` with `@drawable/ic_launcher_foreground` (108 dp, 66 dp safe zone) and a background drawable/color |
+| `<monochrome>` in the adaptive icon (`mipmap-anydpi-v26`) | Themed icon for Android 13+; a single-color vector layer |
+| `app/src/main/ic_launcher_web.png`, `playstore/` | 512 px store icon and listing artwork, still Phone Saver's |
+
+The Credits screen shows `@mipmap/ic_launcher`, so it updates with the launcher icon.
 
 ## Storage compatibility
 
@@ -167,6 +229,8 @@ What targeting API 28 means on newer Android versions:
 API 21, 23, 26, 28, 29, 30, 31, 33, 34, 35 and 36. They cover saving text, images, videos,
 documents and multiple files, the three duplicate-file strategies, automatic saving with
 a single destination, Direct Share (extra and sharing shortcut), unsupported content,
+"Open with" (`ACTION_VIEW` resolution for content/file URIs and common MIME types, copying,
+missing MIME types or names, duplicates, revoked grants, missing files, folders, web links),
 existing settings and destinations being read unchanged, adding/removing destinations,
 the folder picker, light/dark/dynamic themes, the blur fallback and accessibility state of
 Miuix switches.
@@ -175,31 +239,27 @@ Robolectric is not a device: it does not exercise real storage permission enforc
 the system share sheet, DownloadManager, MediaScanner, the SAF picker UI or OEM (HyperOS)
 behaviour. Those need manual testing on devices. See [MIGRATION.md](MIGRATION.md).
 
-## Upcoming Features and Feature Requests
+## Feature requests and bugs
 
-All planned enhancements are here: https://github.com/ScreamingHawk/phone-saver/labels/enhancement
-
-A number of features have been added!
-If you can't see a similar request, [request yours](https://github.com/ScreamingHawk/phone-saver/issues/new) today!
+Please use the [issues of this repository](https://github.com/fjmsh/file-saver-android/issues).
+For problems that also affect the original app, see
+[Phone Saver's issues](https://github.com/ScreamingHawk/phone-saver/issues).
 
 ## Credits
 
-[Michael Standen](https://michael.standen.link)
+DropFiler is a separately branded fork of Phone Saver, originally developed by
+[Michael Standen](https://michael.standen.link) (ScreamingHawk). The original project is
+available at https://github.com/ScreamingHawk/phone-saver. Original code remains subject
+to its applicable [MIT License](LICENSE); the copyright notice in `LICENSE` is kept unchanged.
 
-This software is provided under the [MIT License](https://tldrlegal.com/license/mit-license) so it's free to use so long as you give me credit.
-
-The user interface uses [Miuix XML / HiMiuix](https://github.com/fjmd3v/miuix-xml) by HChenX,
+The user interface uses [Miuix XML / HiMiuix](https://github.com/fjmsh/miuix-xml) by HChenX,
 licensed under the [GNU LGPL 2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html).
 It is included as a separate module (git submodule, `miuix-xml/`) with its own source
 and licence, so it can be replaced or relinked independently of the app.
 
+Other libraries: AndroidX, Gson, ckChangeLog and Kotlin (Apache 2.0).
+
 ### Thanks
 
-Special thanks to all [the contributors](https://github.com/ScreamingHawk/phone-saver/graphs/contributors) of Phone Saver.
-
-I really mean it. You guys rock!
-
-## Support on Beerpay
-Hey dude! Help me out for a couple of :beers:!
-
-[![Beerpay](https://beerpay.io/ScreamingHawk/phone-saver/badge.svg?style=beer-square)](https://beerpay.io/ScreamingHawk/phone-saver)  [![Beerpay](https://beerpay.io/ScreamingHawk/phone-saver/make-wish.svg?style=flat-square)](https://beerpay.io/ScreamingHawk/phone-saver?focus=wish)
+Special thanks to Michael Standen and all [the contributors](https://github.com/ScreamingHawk/phone-saver/graphs/contributors)
+of Phone Saver, including its translators.

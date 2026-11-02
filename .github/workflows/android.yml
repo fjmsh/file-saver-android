@@ -24,3 +24,7 @@ jobs:
           BADGING=$("$AAPT2" dump badging app/build/outputs/apk/debug/app-debug.apk | grep targetSdkVersion | head -1)
           echo "$BADGING"
           echo "$BADGING" | grep -q "targetSdkVersion:'28'"
+      - name: Verify application ID is fjm.sh.dropfiler
+        run: |
+          AAPT2=$(ls -d "$ANDROID_HOME"/build-tools/*/aapt2 | sort -V | tail -1)
+          "$AAPT2" dump badging app/build/outputs/apk/debug/app-debug.apk | grep -q "^package: name='fjm.sh.dropfiler'"

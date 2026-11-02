@@ -6,11 +6,11 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:title="@string/title_activity_credits"
-	tools:context="fjm.sh.filesaver.activity.CreditsActivity">
+	tools:context="fjm.sh.dropfiler.activity.CreditsActivity">
 
 	<androidx.fragment.app.FragmentContainerView
 		android:id="@+id/fragment_container"
-		android:name="fjm.sh.filesaver.activity.CreditsActivity$CreditsFragment"
+		android:name="fjm.sh.dropfiler.activity.CreditsActivity$CreditsFragment"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" />
 </com.hchen.himiuix.MiuixAppBar>

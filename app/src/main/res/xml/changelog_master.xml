@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
 	<release version="6.0.0" versioncode="37">
+		<change>Phone Saver is now DropFiler, a separately branded fork installed as a new app</change>
+		<change>Open with DropFiler: save a copy of a file from a file manager</change>
+		<change>Built-in "DropFiler" save location, so sharing works before adding any (can be hidden in Settings)</change>
 		<change>New HyperOS-inspired design built with Miuix XML</change>
 		<change>Light and dark themes, plus optional dynamic colors on Android 12+</change>
 		<change>Grouped settings and a quicker share destination sheet</change>

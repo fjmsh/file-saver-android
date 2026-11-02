@@ -13,7 +13,7 @@
 	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
 	<application
-		android:name=".FileSaverApplication"
+		android:name=".DropFilerApplication"
 		android:allowBackup="true"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name"
@@ -57,6 +57,17 @@
 			<intent-filter>
 				<action android:name="android.intent.action.SEND_MULTIPLE" />
 				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="*/*" />
+			</intent-filter>
+			<!-- "Open with DropFiler": saves a copy of the opened file (intent data) to a
+				 destination. It does not view or edit files. content:// is the normal case;
+				 file:// is a best-effort fallback for older apps and uses the existing legacy
+				 storage permission only. No BROWSABLE / http(s): web links are not handled. -->
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:scheme="content" />
+				<data android:scheme="file" />
 				<data android:mimeType="*/*" />
 			</intent-filter>
 			<!-- Direct Share on Android 6.0 - 9 -->

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE resources [
-	<!ENTITY appname "Phone Saver">
+	<!ENTITY appname "DropFiler">
 	<!ENTITY author "Michael Standen">
 	]>
 
@@ -9,17 +9,18 @@
 
 	<!-- Menu -->
 	<string name="action_settings">Settings</string>
-	<string name="action_github" translatable="false">fjmd3v</string>
-	<string name="action_github_description">Open fjmd3v on GitHub</string>
-	<string name="github_url" translatable="false">https://github.com/fjmd3v</string>
+	<string name="action_github" translatable="false">fjmsh</string>
+	<string name="action_github_description">Open fjmsh on GitHub</string>
+	<string name="toast_open_with_unreadable">&appname; cannot read this file. The app that opened it may not have granted access to it.</string>
+	<string name="github_url" translatable="false">https://github.com/fjmsh</string>
+	<!-- Where the "unsupported content type" screen files feature requests. -->
+	<string name="issues_new_url" translatable="false">https://github.com/fjmsh/file-saver-android/issues/new</string>
 	<string name="toast_no_browser">No app available to open %1$s</string>
-	<string name="action_change_log">Change Log</string>
-	<string name="action_credits">Credits</string>
+	<string name="action_change_log">Changelog</string>
+	<string name="action_credits">About</string>
 
 	<!-- Folder list -->
 
-	<string name="folder_list_empty_title">Welcome to Phone Saver!</string>
-	<string name="folder_list_empty_body">Please add a save location with the button below.</string>
 
 	<string name="location_select_label">* Select Location *</string>
 
@@ -30,8 +31,6 @@
 	<string name="toast_save_successful">Saved successfully.</string>
 	<string name="toast_save_in_progress">Save in progress…</string>
 	<string name="toast_save_failed">Save failed.</string>
-	<string name="toast_save_init_error">Error loading save locations.</string>
-	<string name="toast_save_init_no_locations">Please open the app to add save locations.</string>
 	<string name="toast_save_file_exists_overwrite">Overwriting file already in this location…</string>
 	<string name="toast_save_file_exists_fail">Cannot save, as file already exists.</string>
 	<string name="toast_save_file_exists_self_abort">Aborting! It appears you are saving this file
@@ -43,7 +42,7 @@
 	<!-- Debug / Error -->
 	<string name="not_supported_content_type">Unsupported Content Type</string>
 	<string name="not_supported" tools:keep="@string/not_supported">Please &lt;a href="%1$s">raise a feature request&lt;/a> with this
-		content type so &author; can add official support. &lt;br/>&lt;br/>You can also enable the \"force saving\"
+		content type so official support can be added. &lt;br/>&lt;br/>You can also enable the \"force saving\"
 		setting to force &appname; to try to save it anyway.</string>
 
 	<!-- Loading -->
@@ -54,17 +53,18 @@
 	<string name="credits_version">v%1$s</string>
 	<string name="title_activity_credits">About &appname;</string>
 	<string name="logo_description">Logo</string>
-	<string name="credits_creator">by <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Phone Saver is a simple application for saving files to your
-		phone through the share feature.
+	<string name="credits_creator">Save anywhere. Organize effortlessly.\n\nA modern Android file-saving utility, based on the app \"Phone Saver\" by <a href="https://github.com/ScreamingHawk">&author;</a></string>
+	<string name="credits_content1">&appname; is a simple application for saving copies of files to your
+		phone through the share feature or \"Open with\".
 	</string>
-	<string name="credits_content2">You can view the source code, log bugs, and request features on
-		<a href="https://github.com/ScreamingHawk/phone-saver">Github</a>.
-	</string>
+	<string name="credits_content2">&appname; is a separately branded fork of Phone Saver, originally developed by
+		&author; (ScreamingHawk). The original project is available at
+		<a href="https://github.com/ScreamingHawk/phone-saver">github.com/ScreamingHawk/phone-saver</a>. Original code remains
+		subject to its applicable MIT License.</string>
 	<string name="credits_content3">This application is completely open source; it is licensed under the
 		<a href="https://tldrlegal.com/license/mit-license">MIT license</a>.
 	</string>
-	<string name="credits_content_translator">This translation of &appname; was provided by
+	<string name="credits_content_translator">This translation of Phone Saver was provided by
 		<a href="https://michael.standen.link">&author;</a>.
 	</string>
 
@@ -120,9 +120,6 @@
 		explicit support. WARNING: Saving with this feature enabled may have adverse effects.
 	</string>
 
-	<string name="pref_title_special_imgur">Save Imgur images</string>
-	<string name="pref_description_special_imgur">Save the first image when sharing an Imgur link.
-	</string>
 
 	<string name="pref_title_log_to_user">Show debug information</string>
 	<array name="pref_list_title_log_to_user">
@@ -163,8 +160,8 @@
 	<string name="navigate_up">Navigate up</string>
 
 	<!-- Main screen -->
-	<string name="folder_list_section_destinations">Save destinations</string>
-	<string name="folder_list_add_destination">Add destination</string>
+	<string name="folder_list_section_destinations">Save Destinations</string>
+	<string name="folder_list_add_destination">Add Destination</string>
 	<string name="folder_list_root_folder">Storage root</string>
 	<string name="folder_list_delete_description">Remove %1$s</string>
 	<string name="folder_list_delete_title">Remove destination?</string>
@@ -222,7 +219,7 @@
 	<string name="credits_miuix_title" translatable="false">Miuix XML (HiMiuix)</string>
 	<string name="credits_miuix_body">User interface components by HChenX, licensed under the
 		<a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU LGPL 2.1</a>.
-		Source: <a href="https://github.com/fjmd3v/miuix-xml">github.com/fjmd3v/miuix-xml</a></string>
+		Source: <a href="https://github.com/fjmsh/miuix-xml">github.com/fjmsh/miuix-xml</a></string>
 	<string name="credits_libraries_title">Other libraries</string>
 	<string name="credits_libraries_body">AndroidX (Apache 2.0), Gson (Apache 2.0), ckChangeLog (Apache 2.0), Kotlin (Apache 2.0).</string>
 
@@ -269,4 +266,8 @@
 	<string name="folder_list_move_up">Move up</string>
 	<string name="folder_list_move_down">Move down</string>
 	<string name="folder_list_moved_announcement">%1$s moved to position %2$d of %3$d</string>
+	<string name="folder_list_default_summary">%1$s · Default location</string>
+	<string name="toast_default_folder_hidden">&appname; is already a built-in save location. Turn off \"Hide \"&appname;\" save location\" in Settings to show it.</string>
+	<string name="pref_title_hide_default_folder">Hide \"&appname;\" save location</string>
+	<string name="pref_description_hide_default_folder">Hide the built-in &appname; folder when you have added other save locations. If there are no others, it is still shown.</string>
 </resources>

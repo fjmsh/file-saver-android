@@ -25,4 +25,6 @@
 	<color name="fs_nav_bar_scrim">#B3F7F7F7</color>
 	<!-- Light navigation bar icons need API 27; use a dark scrim before that -->
 	<color name="fs_nav_bar_scrim_legacy">#80000000</color>
+	<!-- Muted divider between destination rows -->
+	<color name="fs_row_divider">#14000000</color>
 </resources>

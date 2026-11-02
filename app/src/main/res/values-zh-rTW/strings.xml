@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE resources [
-	<!ENTITY appname "Phone Saver">
+	<!ENTITY appname "DropFiler">
 	<!ENTITY author "Michael Standen">
 	]>
 
@@ -10,12 +10,10 @@
 	<!-- Menu -->
 	<string name="action_settings">設定</string>
 	<string name="action_change_log">變更記錄</string>
-	<string name="action_credits">鳴謝</string>
+	<string name="action_credits">關於</string>
 
 	<!-- Folder list -->
 
-	<string name="folder_list_empty_title">歡迎使用 Phone Saver!</string>
-	<string name="folder_list_empty_body">請使用下面的按鈕加入儲存位置。</string>
 
 	<string name="location_select_label">* 選擇位置 *</string>
 
@@ -26,8 +24,6 @@
 	<string name="toast_save_successful">成功儲存。</string>
 	<string name="toast_save_in_progress">正在儲存…</string>
 	<string name="toast_save_failed">儲存失敗。</string>
-	<string name="toast_save_init_error">載入儲存位置時發生錯誤。</string>
-	<string name="toast_save_init_no_locations">請開啟應用程式來加入儲存位置。</string>
 	<string name="toast_save_file_exists_overwrite">正在覆寫已存在於這個位置的檔案…</string>
 	<string name="toast_save_file_exists_fail">檔案已存在，因此無法儲存。</string>
 	<string name="toast_save_file_exists_self_abort">正在中止！似乎您正在儲存檔案
@@ -38,8 +34,8 @@
 
 	<!-- Debug / Error -->
 	<string name="not_supported_content_type">不支援的內容類型</string>
-	<string name="not_supported">請&lt;a href="%1$s">提出這個內容類型的功能請求&lt;/a>，讓
-		&author; 能夠加入正式的支援。&lt;br/>&lt;br/>您也可以啟用「強制儲存」設定來強制
+	<string name="not_supported">請&lt;a href="%1$s">提出這個內容類型的功能請求&lt;/a>，以便
+		加入正式的支援。&lt;br/>&lt;br/>您也可以啟用「強制儲存」設定來強制
 		&appname; 無論如何都試著儲存。</string>
 
 	<!-- Loading -->
@@ -50,17 +46,16 @@
 	<string name="credits_version">v%1$s</string>
 	<string name="title_activity_credits">關於 &appname;</string>
 	<string name="logo_description">標誌</string>
-	<string name="credits_creator">由 <a href="https://michael.standen.link">&author;</a></string>
-	<string name="credits_content1">Phone Saver 是一個簡單的應用程式，可以透過分享功能
-		儲存檔案到手機中。
-	</string>
-	<string name="credits_content2">您可以在
-		<a href="https://github.com/ScreamingHawk/phone-saver">Github</a> 檢視原始碼、記錄錯誤和要求功能。
-	</string>
+	<string name="credits_creator">隨處儲存，輕鬆整理。\n\n現代化的 Android 檔案儲存工具，基於 <a href="https://github.com/ScreamingHawk">&author;</a> 的應用程式「Phone Saver」</string>
+	<string name="credits_content1">&appname; 是一個簡單的應用程式，可以透過分享功能或「以其他應用程式開啟」
+		儲存檔案的副本到手機中。</string>
+	<string name="credits_content2">&appname; 是 Phone Saver 的獨立品牌分支，Phone Saver 最初由 &author; (ScreamingHawk) 開發。
+		原始專案位於 <a href="https://github.com/ScreamingHawk/phone-saver">github.com/ScreamingHawk/phone-saver</a>。
+		原始程式碼仍受其適用的 MIT 授權條款約束。</string>
 	<string name="credits_content3">這個應用程式完全開放原始碼，根據
 		<a href="https://tldrlegal.com/license/mit-license">MIT 許可證</a> 授權。
 	</string>
-	<string name="credits_content_translator">&appname; 的翻譯由
+	<string name="credits_content_translator">Phone Saver 的翻譯由
 		<a href="https://michael.standen.link">&author;</a>提供。
 	</string>
 
@@ -116,9 +111,6 @@
 		明確的支援。警告：啟用此功能可能會對儲存有不良影響。
 	</string>
 
-	<string name="pref_title_special_imgur">儲存 Imgur 圖片</string>
-	<string name="pref_description_special_imgur">當分享 Imgur 連結時，儲存第一張圖片。
-	</string>
 
 	<string name="pref_title_log_to_user">顯示除錯資訊</string>
 	<array name="pref_list_title_log_to_user">
@@ -187,7 +179,7 @@
 	<string name="pref_title_about">關於 &appname;</string>
 	<string name="credits_section_about">關於</string>
 	<string name="credits_section_licenses">開放原始碼授權</string>
-	<string name="credits_miuix_body">介面元件由 HChenX 提供，採用 <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU LGPL 2.1</a> 授權。原始碼：<a href="https://github.com/fjmd3v/miuix-xml">github.com/fjmd3v/miuix-xml</a></string>
+	<string name="credits_miuix_body">介面元件由 HChenX 提供，採用 <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU LGPL 2.1</a> 授權。原始碼：<a href="https://github.com/fjmsh/miuix-xml">github.com/fjmsh/miuix-xml</a></string>
 	<string name="credits_libraries_title">其他程式庫</string>
 	<string name="credits_libraries_body">AndroidX (Apache 2.0)、Gson (Apache 2.0)、ckChangeLog (Apache 2.0)、Kotlin (Apache 2.0)。</string>
 	<string name="dialog_negative">取消</string>
@@ -208,7 +200,8 @@
 	</array>
 
 	<!-- Save result notifications -->
-	<string name="action_github_description">在 GitHub 上開啟 fjmd3v</string>
+	<string name="action_github_description">在 GitHub 上開啟 fjmsh</string>
+	<string name="toast_open_with_unreadable">&appname; 無法讀取這個檔案。開啟它的應用程式可能沒有授予存取權限。</string>
 	<string name="toast_no_browser">沒有可開啟 %1$s 的應用程式</string>
 	<string name="notification_channel_name">儲存結果</string>
 	<string name="notification_channel_description">顯示分享的項目是否已儲存</string>
@@ -241,4 +234,8 @@
 	<string name="folder_list_move_up">上移</string>
 	<string name="folder_list_move_down">下移</string>
 	<string name="folder_list_moved_announcement">已將 %1$s 移至第 %2$d 個（共 %3$d 個）</string>
+	<string name="folder_list_default_summary">%1$s · 預設位置</string>
+	<string name="toast_default_folder_hidden">&appname; 已經是內建的儲存位置。若要顯示，請在設定中關閉「隱藏「&appname;」儲存位置」。</string>
+	<string name="pref_title_hide_default_folder">隱藏「&appname;」儲存位置</string>
+	<string name="pref_description_hide_default_folder">當您已加入其他儲存位置時，隱藏內建的 &appname; 資料夾。如果沒有其他儲存位置，仍會顯示。</string>
 </resources>
