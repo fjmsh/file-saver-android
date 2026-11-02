@@ -10,4 +10,7 @@
 	<!-- Secondary action buttons (e.g. "New folder"). Accent 3 with dynamic colors. -->
 	<attr name="fsColorSecondaryActionContainer" format="color" />
 	<attr name="fsColorOnSecondaryActionContainer" format="color" />
+	<!-- DropFiler symbol beside the main screen title. The primary accent, except where that
+		 is too dark to read on the dark background (dynamic colors, dark theme). -->
+	<attr name="fsColorTitleIcon" format="color" />
 </resources>
