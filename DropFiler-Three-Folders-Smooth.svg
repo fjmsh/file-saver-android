@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="1254" viewBox="0 0 1254 1254" fill="none">
+<title>DropFiler — Smooth three-folder mark</title>
+<desc>Three offset rounded folders with a flowing, integrated right arrow. Hand-crafted smooth Bézier vector paths.</desc>
+<g stroke="#fff" stroke-width="43" stroke-linecap="round" stroke-linejoin="round">
+<!-- rear folder -->
+<path d="M368 309 V292 C368 261 392 238 424 238 H513 C540 238 549 247 567 272 L581 290 C591 302 607 306 625 306 H731 C772 306 805 339 805 380 V552 C805 582 791 607 766 619"/>
+<!-- middle folder -->
+<path d="M291 404 V381 C291 352 314 332 344 332 H444 C468 332 484 343 498 363 L513 385 C522 398 536 399 556 399 H668 C710 399 736 429 736 470 V635 C736 664 724 689 702 702"/>
+<!-- front folder outline, split at left mid to lead into arrow -->
+<path d="M218 632 V478 C218 448 243 428 273 428 H367 C394 428 406 438 423 462 L442 482 C450 492 464 494 480 494 H605 C648 494 663 523 663 558 V720 C663 758 637 781 598 781 H277 C244 781 220 757 220 724 V700"/>
+<!-- continuous inward entry shape -->
+<path d="M218 632 C218 648 229 658 244 658 H445"/>
+<!-- right arrow, deliberately integrated with front entry -->
+<path d="M395 574 L474 653 Q479 658 474 663 L395 740"/>
+</g>
+</svg>
